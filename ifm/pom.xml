@@ -4,6 +4,7 @@
     <groupId>de.hsb.app</groupId>
     <artifactId>ifm</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <description>Eine Rezept verwaltung als Webanwendung</description>
     <packaging>war</packaging>
     <dependencies>
         <dependency>
@@ -21,7 +22,7 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>ifm</finalName>
+        <finalName>Rezeptverwaltung </finalName>
     </build>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
