@@ -4,7 +4,7 @@
     <groupId>de.hsb.app</groupId>
     <artifactId>ifm</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <description>Eine Rezept verwaltung als Webanwendung</description>
+    <description>Eine Rezeptverwaltung als Webanwendung</description>
     <packaging>war</packaging>
     <dependencies>
         <dependency>
