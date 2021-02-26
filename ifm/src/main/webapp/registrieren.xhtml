@@ -4,26 +4,27 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"> 
 <ui:insert name="content">
-	<link rel="stylesheet" href="css/registrieren.css" type="text/css" />
+<link rel="stylesheet" href="css/registrieren.css" type="text/css" />
 	<h:form>
 	 <h:panelGrid columns="2"
 	 	headerClass="header" footerClass="footer">
 	 	
 	 	<h:outputLabel value="Username:" for="username" />
 	 	<h:panelGroup>
-	 		<h:inputText id="username" value="#{}" required="true" requiredMessage="Eingabe fehlt"/>
+	 		<h:inputText id="username" value="#{benutzerHandler.merkeBenutzer.username}" required="true" requiredMessage="Eingabe fehlt"/>
 	 		<h:message for="username" styleClass="message" />
 	 	</h:panelGroup>
 	 		 	<h:outputLabel value="Password:" for="password" />
 	 	<h:panelGroup>
-	 		<h:inputText id="password" value="#{}" required="true" requiredMessage="Eingabe fehlt" />
+	 		<h:inputText id="password" value="#{benutzerHandler.merkeBenutzer.password}" required="true" requiredMessage="Eingabe fehlt" />
 	 		<h:message for="password" styleClass="message" />
 	 	</h:panelGroup>
 	 	<h:form>
-	 	<h:commandButton action="#{}" outcome="index"  value="Speichern" />
+	 	<h:commandButton action="#{benutzerHandler.speichern()}" outcome="index" value="Speichern" />
 	 	</h:form>
 	 	</h:panelGrid>
 	 	</h:form>
-</ui:insert>
+	 	
+	 	</ui:insert>
 </html>
 
