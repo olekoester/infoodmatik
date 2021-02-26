@@ -3,16 +3,32 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
-   		<f:loadBundle basename="resources" var="msg" />
-		<head>
-		<title><ui:insert name="pageTitle">Page Title</ui:insert></title>
-		</head>
-<body>
-	<ul id="list-nav">
-		<li><a href="index.xhtml">Home</a></li>
-		<li><a href="Login">Login</a></li>
-		<li><a href="Registrieren">Registrieren</a></li>
-		</ul>
-</body>
-		
+	
+	<h:head>
+		<link rel="stylesheet" href="css/nav.css" type="text/css" />
+		<title>
+		<ui:insert name="pageTitle">Startseite</ui:insert>
+		</title>
+	</h:head>
+	<body>
+		<nav>
+			<div class="logo">
+				<a href="index.xhtml">IFM</a>
+			</div>
+			<ul class="nav-links">
+				<li>
+					<a href="login.xhtml">Login</a>
+				</li>
+				<li>
+					<a href="registrieren.xhtml">Registrieren</a>
+				</li>
+			</ul>
+			<div class="burger">
+				<div class="line1"></div>
+				<div class="line2"></div>
+				<div class="line3"></div>
+			</div>
+		</nav>
+		<script src="nav-js"></script>
+	</body>
 </html>

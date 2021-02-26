@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+ <application/>
+ <application/>
+ <managed-bean>
+ <managed-bean-name>benutzerHandler</managed-bean-name>
+ <managed-bean-class>de.hsb.app.ifm.controller.BenutzerHandler</managed-bean-class>
+ <managed-bean-scope>session</managed-bean-scope>
+ <managed-property>
+ <property-name>benutzer</property-name>
+ <value></value>
+ </managed-property>
+ </managed-bean>
+</faces-config>
