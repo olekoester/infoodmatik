@@ -16,10 +16,13 @@ import de.hsb.app.ifm.model.Benutzer;
 public class Benutzer implements Serializable {
 	
 	
+
+
 		/**
 	 * 
 	 */
-	private static final long serialVersionUID = 6497311467353500639L;
+	private static final long serialVersionUID = 1L;
+	
 		@Id
 		@GeneratedValue
 		private UUID id;

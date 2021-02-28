@@ -1,8 +1,10 @@
 package de.hsb.app.ifm.controller;
 
+import java.io.Serializable;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.inject.Named;
@@ -19,10 +21,13 @@ import javax.transaction.UserTransaction;
 import de.hsb.app.ifm.model.Benutzer;
 
 
-
 @Named
-@RequestScoped
-public class BenutzerHandler {
+@SessionScoped
+public class BenutzerHandler implements Serializable {
+	
+	
+	private static final long serialVersionUID = 1L;
+	
 	
 	@PersistenceContext(name = "ifm-persistence-unit")
 	private EntityManager em;
@@ -106,32 +111,10 @@ public class BenutzerHandler {
 	
 	@Transactional
 	public String speichern() {
-		UserTransaction userTransaction = utx;
 			merkeBenutzer = em.merge(merkeBenutzer);
 			em.persist(merkeBenutzer);
 			benutzer.setWrappedData(em.createNamedQuery("SelectBenutzer").getResultList());
-		try {
-			userTransaction.commit();
-		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (RollbackException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (HeuristicMixedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (HeuristicRollbackException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SystemException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "index";
+			return "index";
 	}
 	
 	
@@ -140,7 +123,5 @@ public class BenutzerHandler {
 		merkeBenutzer = new Benutzer();
 		return "registrieren";
 	}
-	
-	
-
+		
 }
