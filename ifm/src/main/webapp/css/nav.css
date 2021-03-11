@@ -1,26 +1,58 @@
- #navbar ul { 
-	margin: 0; 
-	padding: 5px; 
-	list-style-type: none; 
-	text-align: center; 
-	background-color: rgb(25,25,25); 
-	} 
- 
-#navbar ul li {  
-	display: inline; 
-	} 
- 
-#navbar ul li a { 
-	text-decoration: none; 
-	padding: .2em 1em; 
-	color: rgb(226,226,226); 
-	background-color: rgb(25,25,25); 
-	} 
- 
-#navbar ul li a:hover { 
-	color: rgb(25,25,25); 
-	background-color: rgb(226,226,226); 
-	} 
- 
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 500;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    background-color:  rgba(25,25,25);
+    font-family: "Poppins", sans-serif;
+}
 
+.logo {
+    color: rgba(226, 226, 226);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 20px;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links a {
+    color: rgb(226, 226, 226);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+    opacity: 0;
+}
+
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+a {
+    color: rgb(226, 226, 226);
+}
+
+body {
+	margin: 0;
+}
 

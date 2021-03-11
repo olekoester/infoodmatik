@@ -2,9 +2,43 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
-<h:head></h:head> 
-<body> 
-
-</body> 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://java.sun.com/jsf/html"> 
+<h:head>
+	<link rel="stylesheet" href="css/nav.css"/>
+</h:head> 
+<h:body> 
+		<nav>
+			<div class="logo">
+				<a href="index.xhtml">IFM</a>
+			</div>
+			<ul class="nav-links">
+				<li><a href="">Rezepte</a></li>
+				<li><a href="login.xhtml">Login</a></li>
+				<li><a href="registrieren.xhtml">Registrieren</a></li>
+			</ul>
+		</nav>
+		<br></br><br></br><br></br><br></br><br></br><br></br>
+	<h:form>
+		<p:panelGrid id="Grid" columns="2">
+			<f:facet name="header"></f:facet>
+			<p:outputLabel value="Username:" for="username" />
+			<h:panelGroup>
+			<p:inputText id="username" required="true"
+				value="#{loginHandler.username}" />
+			<p:message for="username" styleClass="message" />
+			</h:panelGroup>
+			
+			<p:outputLabel value="Password:" for="password" />
+			<h:panelGroup>
+			<p:inputSecret id="password" required="true"
+				value="#{loginHandler.password}" />
+			<p:message for="password" styleClass="message" />
+			</h:panelGroup>
+			
+			<h:panelGroup/>
+			<h:commandButton action="#{loginHandler.login(username, password)}" value="Login"/>
+		</p:panelGrid>
+	</h:form>
+</h:body> 
 </html>

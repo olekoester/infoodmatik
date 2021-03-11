@@ -13,4 +13,9 @@
  <value></value>
  </managed-property>
  </managed-bean>
+  <managed-bean>
+  <managed-bean-name>loginHandler</managed-bean-name>
+  <managed-bean-class>de.hsb.app.ifm.controller.LoginHandler</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
 </faces-config>

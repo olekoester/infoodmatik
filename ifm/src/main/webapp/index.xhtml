@@ -1,27 +1,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
-	<h:head>
-	 	<link rel="stylesheet" href="css/nav.css"></link>
-		<title>
-		<ui:insert name="pageTitle">Startseite</ui:insert>
-		</title>
-		</h:head>
-		<h:body>
-		   <div id="navbar">
-			<ul>
-				<li>
-					<a href="index.xhtml">Home</a>
-				</li>
-				<li>
-					<a href="login.xhtml">Login</a>
-				</li>
-				<li>
-					<a href="registrieren.xhtml">Registrieren</a>
-				</li>
-			</ul>
-			</div>
-	</h:body>
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<link rel="stylesheet" href="css/nav.css"></link>
+	<title><ui:insert name="pageTitle">Startseite</ui:insert></title>
+</h:head>
+<h:body>
+	<nav>
+	<div class="logo">
+		<a href="index.xhtml">IFM</a>
+	</div>
+	<ul class="nav-links">
+		<li><a href="">Rezepte</a></li>
+		<li><a href="login.xhtml">Login</a></li>
+		<li><a href="registrieren.xhtml">Registrieren</a></li>
+	</ul>
+	</nav>
+</h:body>
 </html>
