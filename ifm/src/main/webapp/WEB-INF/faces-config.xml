@@ -18,4 +18,13 @@
   <managed-bean-class>de.hsb.app.ifm.controller.LoginHandler</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
+ <managed-bean>
+  <managed-bean-name>rezeptHandler</managed-bean-name>
+  <managed-bean-class>de.hsb.app.ifm.controller.RezeptHandler</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>rezept</property-name>
+   <value></value>
+  </managed-property>
+ </managed-bean>
 </faces-config>
