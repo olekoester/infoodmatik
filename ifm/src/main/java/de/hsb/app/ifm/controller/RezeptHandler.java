@@ -50,6 +50,8 @@ public class RezeptHandler implements Serializable {
 			e.printStackTrace();
 		}
 		em.persist(new Rezept("Müslii", "1x Milch 1x Müsli 1.Schritt Fügen Sie das Müsli 2.Schritt Milch hinzufügen 3.Schritt Anschließend alles in eine Schüssel geben 4.Schritt Guten Appetit ", "Müsli, Vegetarisch, Milch, Bio, Vegan, lowCarb"));
+				
+		em.persist(new Rezept("Pudding", "1x Puddingmischung 1x Milch 1x Topf 1.Schritt Milch kochen 2. Schritt Puddingmischung dazu geben 3.Schritt Essen", "Milch, Pudding, Vegetarisch, yay" ));	
 		System.out.println("hallo von em persist");
 		rezept = new ListDataModel<> ();
 		rezept.setWrappedData(em.createNamedQuery("SelectRezept").getResultList());
