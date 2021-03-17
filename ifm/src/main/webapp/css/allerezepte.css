@@ -1,0 +1,33 @@
+body {
+	font-family: "Poppins", sans-serif;
+}
+
+.rezept {
+	float: left;
+	width: 24%;
+	background-color: rgb(128, 128, 128);
+	height: 100px;
+	color: white;
+	margin: 5px;
+}
+
+.Ueberschrift {
+	background-color: rgba(25, 25, 25);
+	color: rgba(226, 226, 226);
+	width: 100%;
+	text-align: center;
+	display: block;
+	letter-spacing: 5px;
+}
+
+div a {
+	display: block;
+	height: 100%;
+	text-decoration: none;
+}
+
+table {
+	table-layout: fixed;
+	width: 100%;
+	padding-right:1px;
+}

@@ -8,6 +8,7 @@
  
     <h:head>
         <link rel="stylesheet" href="css/nav.css"></link>
+        <link rel="stylesheet" href="css/allerezepte.css"></link>
         <title><ui:insert name="pageTitle">Rezepte</ui:insert></title>
     </h:head>
     <h:body>
@@ -16,29 +17,34 @@
 		<a href="index.xhtml">IFM</a>
 	</div>
 	<ul class="nav-links">
-		<li><a href="rezepte.xhtml">Rezepte</a></li>
+		<li><a href="allerezepte.xhtml">Rezepte</a></li>
 		<li><a href="login.xhtml">Login</a></li>
 		<li><a href="registrieren.xhtml">Registrieren</a></li>
 	</ul>
+	
 	</nav>
-        
+    <br/>
+	<br/>
+	<br/>
+	<br/>
        
-       <br></br><br></br><br></br><br></br>
        <ui:repeat var="rezept" value="#{rezeptHandler.rezept}" varStatus="status">
        
-       <div id="rezept">
+       <div class="rezept" >
+
        <table>
        
        
        	<tr>
-       		<td>#{rezept.name}</td>
+       		<td class="Ueberschrift"><a href="rezepte.xhtml">#{rezept.name}</a> </td>
        		
        	</tr>
        	<tr>
-       	<td>#{rezept.tags}</td>
+       	<td><a href="rezepte.xhtml">#{rezept.tags}</a></td>
        	</tr>
        
        	</table>
+       	 <a href="rezepte.xhtml?rid=#{rezept.rid}"/>
        	</div>
        </ui:repeat>
         

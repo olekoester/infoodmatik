@@ -3,9 +3,7 @@ package de.hsb.app.ifm.model;
 import java.io.Serializable;
 import java.util.UUID;
 
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
-import javax.inject.Named;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,18 +14,6 @@ import javax.persistence.NamedQuery;
 
 @SessionScoped
 public class Rezept implements Serializable {
-
-	public UUID getRid() {
-		return rid;
-	}
-
-	public void setRid(UUID rid) {
-		this.rid = rid;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 
 	/**
 	 * 
@@ -73,5 +59,16 @@ public class Rezept implements Serializable {
 
 	public void setTags(String tags) {
 		this.tags = tags;
+	}
+	public UUID getRid() {
+		return rid;
+	}
+
+	public void setRid(UUID rid) {
+		this.rid = rid;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 }
