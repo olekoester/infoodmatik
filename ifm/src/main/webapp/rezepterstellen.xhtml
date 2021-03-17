@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+    
+    <h:head>
+    	<link rel="stylesheet" href="css/nav.css"></link>
+    	<link rel="stylesheet" href="css/rezepterstellen.css"></link>
+    	<title><ui:insert name="pageTitle">Rezepte erstellen</ui:insert></title>
+    </h:head>
+    
+    <h:body>
+     <nav>
+	<div class="logo">
+		<a href="index.xhtml">IFM</a>
+	</div>
+	<ul class="nav-links">
+		<li><a href="allerezepte.xhtml">Rezepte</a></li>
+		<li><a href="login.xhtml">Login</a></li>
+		<li><a href="registrieren.xhtml">Registrieren</a></li>
+	</ul>
+	
+	</nav>
+    	
+    	<br/>
+    	<br/>
+    	<br/>
+    	<br/>
+    	
+     	
+    	<h:form>
+    		<h:panelGrid id="eid" class="panelGrit" columns="2">
+    			<f:facet name="header"></f:facet>
+    			<h:outputLabel value="Name des Rezeptes:" for="name"/>
+    			
+    			<h:panelGroup>
+    				<h:inputText class="Name" id="name" value="#{rezeptHandler.merkeRezept.name}" maxlength="50" required="true" requiredMessage="Bitte geben SIE einen Rezeptnamen ein :)" />
+    				<h:message for="name" styleClass="message" />
+    			</h:panelGroup>
+    			
+    			<h:outputLabel value="Beschreibung des Rezeptes:" for="beschreibung"/>
+    			
+    		
+    			<h:panelGroup>
+    				<h:inputText class="Beschr" id="beschreibung" value="#{rezeptHandler.merkeRezept.beschreibung}"  required="true" requiredMessage="Bitte geben SIE eine Rezeptbeschreibung ein :)" />
+    				<h:message for="beschreibung" styleClass="message" />
+    			</h:panelGroup>
+    		
+    			
+    			<h:outputLabel value="Tags des Rezeptes:" for="tags"/>
+    			<h:panelGroup>
+    				<h:inputText class="Tags" id="tags" value="#{rezeptHandler.merkeRezept.tags}" maxlength="50" required="true" requiredMessage="Bitte geben SIE die Rezepttags ein :)" />
+    				<h:message for="tags" styleClass="message" />
+    			</h:panelGroup>
+    			
+    			<h:commandButton action="#{rezeptHandler.speichern()}" value="Speichern" outcome="allerezepte"/>
+    		</h:panelGrid>
+    	</h:form>
+    
+    
+    
+    </h:body>
+    
+</html>
