@@ -112,28 +112,24 @@ public class BenutzerHandler implements Serializable {
 	
 	@Transactional
 	public String speichern() {
-//		try {
-//			merkeBenutzer = em.merge(merkeBenutzer);
-//			em.persist(merkeBenutzer);
-//			benutzer.setWrappedData(em.createNamedQuery("SelectBenutzer").getResultList());
-//			return "index";
-//		}catch(Exception e) {
-//			System.err.println(e);
-//			return "registrieren";
-//		}
+
 		boolean available = true;
 		String username = merkeBenutzer.getUsername();
 		String password = merkeBenutzer.getPassword();
 		System.out.println(username + "		" + password);
+		System.out.println(benutzer);
 		if(benutzer != null) {
 			for(Iterator <Benutzer> it = benutzer.iterator(); it.hasNext();) {
 				Benutzer nutzer = it.next();
-				if(username.equals(nutzer.getUsername()) && password.equals(nutzer.getPassword())) {
+				if(username.equals(nutzer.getUsername())) {
 					available = false;
 				}
 			}
 		}
 		if (available) {
+			merkeBenutzer = em.merge(merkeBenutzer);
+			em.persist(merkeBenutzer);
+			benutzer.setWrappedData(em.createNamedQuery("SelectBenutzer").getResultList());
 			return "index";
 		} else {
 			return "registrieren";
