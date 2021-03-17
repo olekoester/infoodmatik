@@ -1,6 +1,7 @@
 package de.hsb.app.ifm.controller;
 
 import java.io.Serializable;
+import java.util.Iterator;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -111,10 +112,32 @@ public class BenutzerHandler implements Serializable {
 	
 	@Transactional
 	public String speichern() {
-			merkeBenutzer = em.merge(merkeBenutzer);
-			em.persist(merkeBenutzer);
-			benutzer.setWrappedData(em.createNamedQuery("SelectBenutzer").getResultList());
+//		try {
+//			merkeBenutzer = em.merge(merkeBenutzer);
+//			em.persist(merkeBenutzer);
+//			benutzer.setWrappedData(em.createNamedQuery("SelectBenutzer").getResultList());
+//			return "index";
+//		}catch(Exception e) {
+//			System.err.println(e);
+//			return "registrieren";
+//		}
+		boolean available = true;
+		String username = merkeBenutzer.getUsername();
+		String password = merkeBenutzer.getPassword();
+		System.out.println(username + "		" + password);
+		if(benutzer != null) {
+			for(Iterator <Benutzer> it = benutzer.iterator(); it.hasNext();) {
+				Benutzer nutzer = it.next();
+				if(username.equals(nutzer.getUsername()) && password.equals(nutzer.getPassword())) {
+					available = false;
+				}
+			}
+		}
+		if (available) {
 			return "index";
+		} else {
+			return "registrieren";
+		}
 	}
 	
 	

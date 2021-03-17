@@ -8,12 +8,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
-
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import de.hsb.app.ifm.model.Benutzer;
 
 
 @NamedQuery(name="SelectBenutzer", query="Select b from Benutzer b")
+
+//@Table(uniqueConstraints={@UniqueConstraint(columnNames={"username"})})
 @Entity
 public class Benutzer implements Serializable {
 	
@@ -28,7 +31,7 @@ public class Benutzer implements Serializable {
 		@Id
 		@GeneratedValue
 		private UUID id;
-		@Column(unique=true)
+		@Column(name="username", unique=true)
 		private String username;
 		private String password;
 		
