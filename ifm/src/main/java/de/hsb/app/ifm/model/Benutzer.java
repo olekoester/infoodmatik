@@ -2,6 +2,8 @@ package de.hsb.app.ifm.model;
 
 import java.io.Serializable;
 import java.util.*;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -26,6 +28,7 @@ public class Benutzer implements Serializable {
 		@Id
 		@GeneratedValue
 		private UUID id;
+		@Column(unique=true)
 		private String username;
 		private String password;
 		
