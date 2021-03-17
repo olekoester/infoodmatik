@@ -34,6 +34,7 @@ public class Benutzer implements Serializable {
 		@Column(name="username", unique=true)
 		private String username;
 		private String password;
+		private Rolle rolle;
 		
 		
 		public Benutzer(String username, String password) {
@@ -67,7 +68,22 @@ public class Benutzer implements Serializable {
 			this.password = password;
 		}
 
+		
+		public enum Rolle {
+			ADMIN,
+			NUTZER
+		}
+		
+		
 		public Benutzer() {
 			
+		}
+
+		public Rolle getRolle() {
+			return rolle;
+		}
+
+		public void setRolle(Rolle rolle) {
+			this.rolle = rolle;
 		}
 }

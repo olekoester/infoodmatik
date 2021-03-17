@@ -20,6 +20,7 @@ import javax.transaction.Transactional;
 import javax.transaction.UserTransaction;
 
 import de.hsb.app.ifm.model.Benutzer;
+import de.hsb.app.ifm.model.Benutzer.Rolle;
 
 
 @Named
@@ -112,7 +113,8 @@ public class BenutzerHandler implements Serializable {
 	
 	@Transactional
 	public String speichern() {
-
+		merkeBenutzer.setRolle(Rolle.ADMIN);
+		System.out.println(merkeBenutzer.getRolle());
 		boolean available = true;
 		String username = merkeBenutzer.getUsername();
 		String password = merkeBenutzer.getPassword();

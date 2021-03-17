@@ -5,7 +5,6 @@
       xmlns:h="http://java.sun.com/jsf/html"> 
 <ui:insert name="content">
 <h:head>
-<link rel="stylesheet" href="css/registrieren.css" type="text/css" />
 <link rel="stylesheet" href="css/nav.css" type="text/css" />
 </h:head>
 <h:body>	
@@ -34,6 +33,10 @@
 	 		<h:inputSecret id="password" value="#{benutzerHandler.merkeBenutzer.password}" required="true" requiredMessage="Eingabe fehlt" />
 	 		<h:message for="password" styleClass="message" />
 	 	</h:panelGroup>
+	 	<h:panelGroup>
+	 	<h:selectBooleanCheckbox value="Admin">Admin</h:selectBooleanCheckbox>
+	 	</h:panelGroup>
+	 	<f:ajax />
 	 	<h:form>
 	 	<h:commandButton action="#{benutzerHandler.speichern()}" outcome="index" value="Speichern" />
 	 	</h:form>
