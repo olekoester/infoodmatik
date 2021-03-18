@@ -1,6 +1,8 @@
 package de.hsb.app.ifm.controller;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.UUID;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -10,6 +12,7 @@ import javax.faces.model.ListDataModel;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.HeuristicMixedException;
 import javax.transaction.HeuristicRollbackException;
 import javax.transaction.NotSupportedException;
@@ -17,6 +20,7 @@ import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.Transactional;
 import javax.transaction.UserTransaction;
+
 
 
 import de.hsb.app.ifm.model.Rezept;
@@ -36,6 +40,8 @@ public class RezeptHandler implements Serializable {
 	private UserTransaction utx;
 
 	private DataModel<Rezept> rezept;
+	private List<Rezept> aktuellesRezept;
+	
 	private Rezept merkeRezept = new Rezept ();
 
 	@PostConstruct
@@ -55,6 +61,7 @@ public class RezeptHandler implements Serializable {
 		em.persist(new Rezept("Toast", "1x Weißbrot 1x Toaster 1.Schritt Weißbrot aus Verpackung 2. Schritt Weißbrot in Toaster 3.Schritt warten 4.Schritt Toast aus Toaster 5.Schritt Essen", "Toast, Weißbrot, Vegetarisch, Geister, Bio" ));
 		em.persist(new Rezept("Nix", "1x Nix 1.Schritt Du machst eh nix du Faues Stück >:C", "Vegan, nix, also wirklich, da ist nix, also Langsam werde ich Wild, HALLO DU BRAUCHST HIER NICH GUCKEN, SAMMA WAS IST MIT DIR?," ));	
 		
+		//System.out.println(rezept.getRowData());
 		rezept = new ListDataModel<> ();
 		rezept.setWrappedData(em.createNamedQuery("SelectRezept").getResultList());
 		try {
@@ -94,6 +101,17 @@ public class RezeptHandler implements Serializable {
 		return "index";
 		
 	}
+	
+	@Transactional
+	public List<Rezept> getOneRezept (String rid) {
+		System.out.println(rid);
+		UUID rid2=UUID.fromString(rid) ;
+		Query query= em.createNamedQuery("SelectOneRezept");
+		query.setParameter("rid", rid2);
+		return query.getResultList();
+				//em.createNamedQuery("SelectOneRezept").setParameter("rid", rid2).getResultList();	
+	}
+	
 	
 	
 	public DataModel<Rezept> getRezept() {

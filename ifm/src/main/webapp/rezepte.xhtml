@@ -9,11 +9,12 @@
     </h:head>
     <h:body>
     
-    <h:dataTable var="rezept" value="#{rezeptHandler.rezept}"
+    <ui:param name="uuid" value="#{param['rid']}" />
+    <h:dataTable var="rezept" value="#{rezeptHandler.getOneRezept(uuid)}"
    rowClasses="odd,even" headerClass="header">
     	<f:facet name="title">Titel</f:facet>
     	<h:column>
-    	 <h:outputText value="#{rezept.name}" />
+    	 <h:outputText value="#{rezept.rid}" />
     	</h:column>
         <f:facet name="beschreibung">Beschreibung</f:facet>
         <h:column>

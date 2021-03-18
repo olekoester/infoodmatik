@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 
 @NamedQuery(name="SelectRezept", query="Select r from Rezept r")
+@NamedQuery(name="SelectOneRezept", query=" Select r from Rezept r where r.rid=: rid")
+@NamedQuery(name="SelectRezept2", query=" Select r from Rezept r where r.name= 'Pudding'")
 @Entity
 
 @SessionScoped
