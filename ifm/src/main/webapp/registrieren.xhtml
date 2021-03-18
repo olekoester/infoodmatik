@@ -8,19 +8,19 @@
 		<link rel="stylesheet" href="css/nav.css" type="text/css" />
 		<h:outputScript>
 			function changeValue(){
-				let element = document.getElementById("adminPass");
-				let value = element.getAttribute("disabled")
-				console.log(value)
-				if(value){
-					value = false;
+				let element = document.getElementById("adminPass").style.display;
+				if(element == "block"){
+					document.getElementById("adminPass").style.display = "none";
 				}else{
-					value = true;
-					console.log("Hallo von else")
+					document.getElementById("adminPass").style.display = "block";
 				}
-				console.log(value)
-				element.setAttribute("disabled", value);
 			}
 		</h:outputScript>
+		<style>
+		   #adminPass{
+		   	 display: none;
+		   }
+		</style>
 	</h:head>
 	<h:body>
 		<nav>
@@ -64,7 +64,7 @@
 					</h:selectBooleanCheckbox>
 					<br />
 					<br />
-					<div id="adminPass" disabled="true">
+					<div id="adminPass">
 						<h:outputLabel value="Admin-Passwort: " />
 						<h:inputText id="text" />
 					</div>
