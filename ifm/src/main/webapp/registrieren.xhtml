@@ -58,7 +58,7 @@
 						requiredMessage="Eingabe fehlt" />
 					<h:message for="password" styleClass="message" />
 				</h:panelGroup>
-				<h:form>
+				<h:panelGroup>
 					<h:selectBooleanCheckbox id="box" onchange="changeValue()">
 						Admin
 					</h:selectBooleanCheckbox>
@@ -66,9 +66,9 @@
 					<br />
 					<div id="adminPass">
 						<h:outputLabel value="Admin-Passwort: " />
-						<h:inputText id="text" />
+						<h:inputSecret id="text" value="#{benutzerHandler.adminEingabe}"/>
 					</div>
-				</h:form>
+				</h:panelGroup>
 				<h:form>
 					<h:commandButton id="button"
 						action="#{benutzerHandler.speichern()}" outcome="index"

@@ -26,10 +26,8 @@ import de.hsb.app.ifm.model.Benutzer.Rolle;
 @Named
 @SessionScoped
 public class BenutzerHandler implements Serializable {
-	
-	
+
 	private static final long serialVersionUID = 1L;
-	
 	
 	@PersistenceContext(name = "ifm-persistence-unit")
 	private EntityManager em;
@@ -39,6 +37,17 @@ public class BenutzerHandler implements Serializable {
 	
 	public DataModel<Benutzer> getBenutzer() {
 		return benutzer;
+	}
+	
+	private String adminEingabe;
+	private String adminPasswort = "admin";
+	public String getAdminEingabe() {
+		return adminEingabe;
+	}
+
+
+	public void setAdminEingabe(String adminEingabe) {
+		this.adminEingabe = adminEingabe;
 	}
 
 	private DataModel<Benutzer> benutzer;
@@ -113,8 +122,7 @@ public class BenutzerHandler implements Serializable {
 	
 	@Transactional
 	public String speichern() {
-		merkeBenutzer.setRolle(Rolle.ADMIN);
-		System.out.println(merkeBenutzer.getRolle());
+		System.out.println(adminEingabe);
 		boolean available = true;
 		String username = merkeBenutzer.getUsername();
 		String password = merkeBenutzer.getPassword();
@@ -128,6 +136,17 @@ public class BenutzerHandler implements Serializable {
 				}
 			}
 		}
+		if(!(adminEingabe.equals(""))) {
+			if(adminEingabe.equals(adminPasswort)) {
+				merkeBenutzer.setRolle(Rolle.ADMIN);
+			}else {
+				available = false;
+			}
+		}else {
+			merkeBenutzer.setRolle(Rolle.NUTZER);
+		}
+		System.out.println(merkeBenutzer.getRolle());
+		System.out.println(available);
 		if (available) {
 			merkeBenutzer = em.merge(merkeBenutzer);
 			em.persist(merkeBenutzer);
