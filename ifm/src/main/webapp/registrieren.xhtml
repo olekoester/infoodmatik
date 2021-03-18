@@ -1,48 +1,82 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 <ui:insert name="content">
-<h:head>
-<link rel="stylesheet" href="css/nav.css" type="text/css" />
-</h:head>
-<h:body>	
-	<nav>
-	<div class="logo">
-		<a href="index.xhtml">IFM</a>
-	</div>
-	<ul class="nav-links">
-		<li><a href="rezepte.xhtml">Rezepte</a></li>
-		<li><a href="login.xhtml">Login</a></li>
-		<li><a href="registrieren.xhtml">Registrieren</a></li>
-	</ul>
-	</nav>
-	<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-	<h:form>
-	 <h:panelGrid columns="2"
-	 	headerClass="header" footerClass="footer">
-	 	
-	 	<h:outputLabel value="Username:" for="username" />
-	 	<h:panelGroup>
-	 		<h:inputText id="username" value="#{benutzerHandler.merkeBenutzer.username}" required="true" requiredMessage="Eingabe fehlt"/>
-	 		<h:message for="username" styleClass="message" />
-	 	</h:panelGroup>
-	 		 	<h:outputLabel value="Password:" for="password" />
-	 	<h:panelGroup>
-	 		<h:inputSecret id="password" value="#{benutzerHandler.merkeBenutzer.password}" required="true" requiredMessage="Eingabe fehlt" />
-	 		<h:message for="password" styleClass="message" />
-	 	</h:panelGroup>
-	 	<h:panelGroup>
-	 	<h:selectBooleanCheckbox value="Admin">Admin</h:selectBooleanCheckbox>
-	 	</h:panelGroup>
-	 	<f:ajax />
-	 	<h:form>
-	 	<h:commandButton action="#{benutzerHandler.speichern()}" outcome="index" value="Speichern" />
-	 	</h:form>
-	 	</h:panelGrid>
-	 	</h:form>
-	 	</h:body>
-	 	</ui:insert>
+	<h:head>
+		<link rel="stylesheet" href="css/nav.css" type="text/css" />
+		<h:outputScript>
+			function changeValue(){
+				let element = document.getElementById("adminPass");
+				let value = element.getAttribute("disabled")
+				console.log(value)
+				if(value){
+					value = false;
+				}else{
+					value = true;
+					console.log("Hallo von else")
+				}
+				console.log(value)
+				element.setAttribute("disabled", value);
+			}
+		</h:outputScript>
+	</h:head>
+	<h:body>
+		<nav>
+		<div class="logo">
+			<a href="index.xhtml">IFM</a>
+		</div>
+		<ul class="nav-links">
+			<li><a href="rezepte.xhtml">Rezepte</a></li>
+			<li><a href="login.xhtml">Login</a></li>
+			<li><a href="registrieren.xhtml">Registrieren</a></li>
+		</ul>
+		</nav>
+		<br></br>
+		<br></br>
+		<br></br>
+		<br></br>
+		<br></br>
+		<br></br>
+		<br></br>
+		<br></br>
+		<h:form>
+			<h:panelGrid columns="2" headerClass="header" footerClass="footer">
+
+				<h:outputLabel value="Username:" for="username" />
+				<h:panelGroup>
+					<h:inputText id="username"
+						value="#{benutzerHandler.merkeBenutzer.username}" required="true"
+						requiredMessage="Eingabe fehlt" />
+					<h:message for="username" styleClass="message" />
+				</h:panelGroup>
+				<h:outputLabel value="Password:" for="password" />
+				<h:panelGroup>
+					<h:inputSecret id="password"
+						value="#{benutzerHandler.merkeBenutzer.password}" required="true"
+						requiredMessage="Eingabe fehlt" />
+					<h:message for="password" styleClass="message" />
+				</h:panelGroup>
+				<h:form>
+					<h:selectBooleanCheckbox id="box" onchange="changeValue()">
+						Admin
+					</h:selectBooleanCheckbox>
+					<br />
+					<br />
+					<div id="adminPass" disabled="true">
+						<h:outputLabel value="Admin-Passwort: " />
+						<h:inputText id="text" />
+					</div>
+				</h:form>
+				<h:form>
+					<h:commandButton id="button"
+						action="#{benutzerHandler.speichern()}" outcome="index"
+						value="Speichern" />
+				</h:form>
+			</h:panelGrid>
+		</h:form>
+	</h:body>
+</ui:insert>
 </html>
 
