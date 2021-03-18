@@ -1,32 +1,99 @@
-
-table{
-    width: 100%;
+body {
+	font-family: "Poppins", sans-serif;
 }
 
-th {
-    background-color: #ccd2d3;
-    padding: 5px 5px 5px 5px;
-    border: 1px solid;
+.main {
+	background-color: #FFFFFF;
+	width: 400 px;
+	height: 400px;
+	margin: 7em auto;
+	border-radius: 1.5em;
+	box-shadow: 0px 11px 35px 2px rgba(0,0,0,0.14);
 }
 
-td {
-    padding: 0px 5px 0px 5px;
+.sign {
+	padding-top: 40px;
+	color: rgb(26,26,26);
+	font-family: "Poppins", sans-serif;
+	font-weight: 23px;	
 }
 
-td.footer {
-    background-color: #ccd2d3;
-    border: 1px solid;
-    padding: 5px;
+.un {
+	width: 76%;
+	color: rgb(0, 170, 255);
+	font-weight: 700;
+	font-size: 14px;
+	letter-spacing: 1px;
+	background: rgba(136, 126, 126, 0.04);
+	padding: 10px 20px;
+	border: none;
+	border-radius: 20px;
+	outline: none;
+	box-sizing: border-box;
+	border: 2px solid rgba(0,0,0,0.02);
+	margin-bottom: 50px;
+	margin-left: 46px;
+	text-align: center;
+	margin-bottom: 27px;
+	font-family: "Poppins", sans-serif;
 }
 
-tr.odd {
-    background-color: #edf4f5;
+
+form.form1 {
+	padding-top: 40px;
 }
 
-tr.even {
-    background-color: #dae0e1;
+.pass {
+	width: 76%;
+	color: rgb(38, 50,56);
+	font-weight: 700;
+	font-size: 14px;
+	letter-spacing: 1px;
+	background: rgba(136,126,126,0.04);
+	padding: 10px 20px;
+	border: none;
+	border-radius: 20px;
+	outline: none;
+	box-sizing: border-box;
+	border: 2px solid rgba(0,0,0,0.02);
+	margin-bottom: 50px;
+	margin-left: 46px;
+	text-align: center;
+	margin-bottom: 27px;
+	font-family: "Poppins",sans sans-serif;
 }
 
-.message {
-	color: red; font-size: 14px;
+.un:focu, .pass:focus {
+	border: 2px solid rgba(0,0,0,0.18) i !important;
+}
+
+.submit {
+	cursor: pointer;
+	border-radius: 5em;
+	color: #fff;
+	background: rgba(26,26,26);
+	border: 0;
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	font-family: "Poppins", sans-serif;
+	margin-left: 35%;
+	font-size: 13px;
+}
+
+.forgot {
+	text-shadow: 0px 0px 3px rgba(117,117,117,0.12);
+	color: #E1BEE7;
+	text-decoration: none;
+}
+a {
+	color:  rgba(226, 226, 226);
+	text-decoration: none
+}
+
+@media (max-width: 600px) {
+	.main {
+		border-radius: 0px;
+	}
 }
