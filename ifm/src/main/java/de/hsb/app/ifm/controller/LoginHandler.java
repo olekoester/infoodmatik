@@ -9,6 +9,7 @@ import javax.faces.model.DataModel;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Table;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import org.hibernate.annotations.NamedQuery;
 import de.hsb.app.ifm.model.Benutzer;
@@ -21,7 +22,8 @@ public class LoginHandler {
 	@PersistenceContext(name = "ifm-persistence-unit")
 	private EntityManager em;
 	private boolean loggedIn = false;
-
+	
+	
 	public EntityManager getEm() {
 		return em;
 	}
@@ -57,6 +59,9 @@ public class LoginHandler {
 				Benutzer nutzer = it.next();
 				if (username.equals(nutzer.getUsername()) && password.equals(nutzer.getPassword())) {
 					loggedIn = true;
+					FacesContext fc = FacesContext.getCurrentInstance();
+					HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
+					session.setAttribute("username", username);
 				}
 			}
 		}
@@ -76,8 +81,10 @@ public class LoginHandler {
 		System.out.println("checkLogin");
 		System.out.println(loggedIn);
 		FacesContext fc = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 		ConfigurableNavigationHandler nav = (ConfigurableNavigationHandler) fc.getApplication().getNavigationHandler();
-		if (loggedIn) {
+		if (session != null) {
+			System.out.println(session.getAttribute("username"));
 			nav.performNavigation("allerezepte");
 		}else {
 			nav.performNavigation("login");
