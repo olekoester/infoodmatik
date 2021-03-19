@@ -1,6 +1,5 @@
 package de.hsb.app.ifm.controller;
 
-import java.sql.ResultSet;
 import java.util.Iterator;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.ConfigurableNavigationHandler;
@@ -32,7 +31,6 @@ public class LoginHandler {
 
 	private String username;
 	private String password;
-	private ResultSet rs;
 
 	public String getUsername() {
 		return username;
