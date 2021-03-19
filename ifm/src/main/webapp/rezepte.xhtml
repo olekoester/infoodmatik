@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core">
 <h:head>
 	<link rel="stylesheet" href="css/nav.css"></link>
 	<title><ui:insert name="pageTitle">Rezepte</ui:insert></title>
@@ -20,28 +21,34 @@
 	</ul>
 
 	</nav>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
+	<br />
+	<br />
+	<br />
+	<br />
 
 	<ui:param name="uuid" value="#{param['rid']}" />
-	<h:dataTable var="rezept" value="#{rezeptHandler.getOneRezept(uuid)}"
-		rowClasses="odd,even" headerClass="header">
-		<f:facet name="title">Titel</f:facet>
-		<h:column>
-			<h:outputText value="#{rezept.name}" />
-		</h:column>
-		<f:facet name="beschreibung">Beschreibung</f:facet>
-		<h:column>
-			<h:outputText value="#{rezept.beschreibung}" />
-		</h:column>
-		<f:facet name="tags">Tags</f:facet>
-		<h:column>
-			<h:outputText value="#{rezept.tags}" />
-		</h:column>
-	</h:dataTable>
-
+	<c:if test="#{not empty uuid}">
+		<h:dataTable var="rezept" value="#{rezeptHandler.getOneRezept(uuid)}"
+			rowClasses="odd,even" headerClass="header">
+			<f:facet name="title">Titel</f:facet>
+			<h:column>
+				<h:outputText value="#{rezept.name}" />
+			</h:column>
+			<f:facet name="beschreibung">Beschreibung</f:facet>
+			<h:column>
+				<h:outputText value="#{rezept.beschreibung}" />
+			</h:column>
+			<f:facet name="tags">Tags</f:facet>
+			<h:column>
+				<h:outputText value="#{rezept.tags}" />
+			</h:column>
+		</h:dataTable>
+	</c:if>
+	<c:if test="#{empty uuid}">
+	<h:form>
+	<h:commandButton action="#{rezeptHandler.backToIndex()}" value="Zurück zu Home" />
+	</h:form>
+	</c:if>
 
 </h:body>
 </html>
