@@ -3,6 +3,8 @@ package de.hsb.app.ifm.controller;
 import java.sql.ResultSet;
 import java.util.Iterator;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.ConfigurableNavigationHandler;
+import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -19,6 +21,7 @@ public class LoginHandler {
 	@PersistenceContext(name = "ifm-persistence-unit")
 	private EntityManager em;
 	private boolean loggedIn = false;
+
 	public EntityManager getEm() {
 		return em;
 	}
@@ -49,10 +52,10 @@ public class LoginHandler {
 
 	@Transactional
 	public String login(DataModel<Benutzer> benutzer) {
-		if(benutzer != null) {
-			for(Iterator <Benutzer> it = benutzer.iterator(); it.hasNext();) {
+		if (benutzer != null) {
+			for (Iterator<Benutzer> it = benutzer.iterator(); it.hasNext();) {
 				Benutzer nutzer = it.next();
-				if(username.equals(nutzer.getUsername()) && password.equals(nutzer.getPassword())) {
+				if (username.equals(nutzer.getUsername()) && password.equals(nutzer.getPassword())) {
 					loggedIn = true;
 				}
 			}
@@ -69,12 +72,16 @@ public class LoginHandler {
 		return "index";
 	}
 
-	public String checkLoggedIn() {
-		System.out.println("Hallo von checkLogin");
-		if(loggedIn) {
-			System.out.println("Hallo von checkLogin: eingeloggt");
-			return "registrieren";
+	public void checkLoggedIn() {
+		System.out.println("checkLogin");
+		System.out.println(loggedIn);
+		FacesContext fc = FacesContext.getCurrentInstance();
+		ConfigurableNavigationHandler nav = (ConfigurableNavigationHandler) fc.getApplication().getNavigationHandler();
+		if (loggedIn) {
+			nav.performNavigation("allerezepte");
+		}else {
+			nav.performNavigation("login");
 		}
-		return "index";
+
 	}
 }
