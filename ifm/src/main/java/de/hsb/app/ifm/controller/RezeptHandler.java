@@ -42,7 +42,7 @@ public class RezeptHandler implements Serializable {
 	private UserTransaction utx;
 
 	private DataModel<Rezept> rezept;
-	
+	private static boolean firstExecute = true;
 	private Rezept merkeRezept = new Rezept ();
 
 	@PostConstruct
@@ -56,12 +56,14 @@ public class RezeptHandler implements Serializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		if(firstExecute) {
 		em.persist(new Rezept("Müslii", "1x Milch 1x Müsli"," 1.Schritt Fügen Sie das Müsli 2.Schritt Milch hinzufügen 3.Schritt Anschließend alles in eine Schüssel geben 4.Schritt Guten Appetit ", "Müsli, Vegetarisch, Milch, Bio, Vegan, lowCarb"));		
 		em.persist(new Rezept("Pudding", "1x Puddingmischung 1x Milch 1x Topf", "1.Schritt Milch kochen 2. Schritt Puddingmischung dazu geben 3.Schritt Essen", "Milch, Pudding, Vegetarisch, yay" ));	
 		em.persist(new Rezept("KrümelEistee", "1x Wasser 1x Eisteekrümel 1x Wasserkocher", "1.Schritt Wasser in Wasserkocher kochen 2. Schritt Krümeltee in Tasse 3.Schritt Kochendes Wasser in Tasse auf Krümeltee", "Wasser, Tee, Krümel, lowCarb" ));	
 		em.persist(new Rezept("Toast", "1x Weißbrot 1x Toaster", "1.Schritt Weißbrot aus Verpackung 2. Schritt Weißbrot in Toaster 3.Schritt warten 4.Schritt Toast aus Toaster 5.Schritt Essen", "Toast, Weißbrot, Vegetarisch, Geister, Bio" ));
 		em.persist(new Rezept("Nix", "1x Nix" ,"1.Schritt Du machst eh nix du Faues Stück >:C", "Vegan, nix, also wirklich, da ist nix, also Langsam werde ich Wild, HALLO DU BRAUCHST HIER NICH GUCKEN, SAMMA WAS IST MIT DIR?," ));	
-		
+		firstExecute=false;
+		}
 		//System.out.println(rezept.getRowData());
 		rezept = new ListDataModel<> ();
 		rezept.setWrappedData(em.createNamedQuery("SelectRezept").getResultList());
@@ -120,8 +122,9 @@ public class RezeptHandler implements Serializable {
 	
 //	public List<Rezept> SucheRezept(String SuchAnfrage){
 //		
-//		Query query= em.createNamedQuery("")
-//		
+//		Query query= em.createNamedQuery("SucheRezept");
+//		query.setParameter("name", SuchAnfrage);
+//		System.out.println(query.getResultList());
 //		return query.getResultList();
 //	}
 	
