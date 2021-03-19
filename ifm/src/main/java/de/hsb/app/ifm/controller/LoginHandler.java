@@ -1,10 +1,8 @@
 package de.hsb.app.ifm.controller;
 
-<<<<<<< Updated upstream
-=======
-import java.security.PublicKey;
-import java.sql.ResultSet;
->>>>>>> Stashed changes
+
+
+
 import java.util.Iterator;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.ConfigurableNavigationHandler;
@@ -16,7 +14,7 @@ import javax.persistence.Table;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
-import org.eclipse.microprofile.openapi.annotations.headers.Header;
+
 import org.hibernate.annotations.NamedQuery;
 import de.hsb.app.ifm.model.Benutzer;
 
