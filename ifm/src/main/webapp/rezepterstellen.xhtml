@@ -16,6 +16,13 @@
 		<a href="index.xhtml">IFM</a>
 	</div>
 	<ul class="nav-links">
+		<li><div class="suchleiste">
+			<form action="">
+			<input type="text" name="suche">
+			</input>
+			<button type="submit">Suchen</button>
+			</form>
+		</div></li>
 		<li><a href="allerezepte.xhtml">Rezepte</a></li>
 		<li><a href="login.xhtml">Login</a></li>
 		<li><a href="registrieren.xhtml">Registrieren</a></li>
@@ -27,15 +34,16 @@
     	<br/>
     	<br/>
     	<br/>
+    	<br/>
     	
      	
     	<h:form>
     		<h:panelGrid id="eid" class="panelGrit" columns="2">
-    			<f:facet name="header"></f:facet>
-    			<h:outputLabel value="Name des Rezeptes:" for="name"/>
+    			<f:facet  calss="Bez" name="header"></f:facet>
+    			<h:outputLabel class="Bez" value="Name des Rezeptes:" for="name"/>
     			
     			<h:panelGroup>
-    				<h:inputText class="Name" id="name" value="#{rezeptHandler.merkeRezept.name}" maxlength="50" required="true" requiredMessage="Bitte geben SIE einen Rezeptnamen ein :)" />
+    				<h:inputText id="name" styleClass="text-input" value="#{rezeptHandler.merkeRezept.name}" maxlength="50" required="true" requiredMessage="Bitte geben SIE einen Rezeptnamen ein :)" />
     				<h:message for="name" styleClass="message" />
     			</h:panelGroup>
     			
@@ -43,14 +51,14 @@
     			
     		
     			<h:panelGroup>
-    				<h:inputText class="Beschr" id="beschreibung" value="#{rezeptHandler.merkeRezept.beschreibung}"  required="true" requiredMessage="Bitte geben SIE eine Rezeptbeschreibung ein :)" />
+    				<h:inputText  id="beschreibung" styleClass="text-input" value="#{rezeptHandler.merkeRezept.beschreibung}"  required="true" requiredMessage="Bitte geben SIE eine Rezeptbeschreibung ein :)" />
     				<h:message for="beschreibung" styleClass="message" />
     			</h:panelGroup>
     		
     			
     			<h:outputLabel value="Tags des Rezeptes:" for="tags"/>
     			<h:panelGroup>
-    				<h:inputText class="Tags" id="tags" value="#{rezeptHandler.merkeRezept.tags}" maxlength="50" required="true" requiredMessage="Bitte geben SIE die Rezepttags ein :)" />
+    				<h:inputText  id="tags" styleClass="text-input" value="#{rezeptHandler.merkeRezept.tags}" maxlength="50" required="true" requiredMessage="Bitte geben SIE die Rezepttags ein :)" />
     				<h:message for="tags" styleClass="message" />
     			</h:panelGroup>
     			
