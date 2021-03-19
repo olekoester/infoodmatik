@@ -151,7 +151,7 @@ public class BenutzerHandler implements Serializable {
 			merkeBenutzer = em.merge(merkeBenutzer);
 			em.persist(merkeBenutzer);
 			benutzer.setWrappedData(em.createNamedQuery("SelectBenutzer").getResultList());
-			return "index";
+			return "login";
 		} else {
 			return "registrieren";
 		}

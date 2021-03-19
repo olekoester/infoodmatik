@@ -84,7 +84,12 @@ public class LoginHandler {
 	}
 
 	public String checkLoggedIn() {
-		return "";
+		System.out.println("Hallo von checkLogin");
+		if(loggedIn) {
+			System.out.println("Hallo von checkLogin: eingeloggt");
+			return "registrieren";
+		}
+		return "index";
 	}
 
 }

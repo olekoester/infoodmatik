@@ -8,6 +8,7 @@
 	<title><ui:insert name="pageTitle">Startseite</ui:insert></title>
 </h:head>
 <h:body>
+	<f:event listener="#{loginHandler.checkLoggedIn()}" type="preRenderView"></f:event>
 	<nav>
 	<div class="logo">
 		<a href="index.xhtml">IFM</a>
