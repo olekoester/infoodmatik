@@ -1,6 +1,8 @@
 package de.hsb.app.ifm.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -40,7 +42,6 @@ public class RezeptHandler implements Serializable {
 	private UserTransaction utx;
 
 	private DataModel<Rezept> rezept;
-	private List<Rezept> aktuellesRezept;
 	
 	private Rezept merkeRezept = new Rezept ();
 
@@ -104,14 +105,22 @@ public class RezeptHandler implements Serializable {
 	
 	@Transactional
 	public List<Rezept> getOneRezept (String rid) {
-		System.out.println(rid);
+		try {
 		UUID rid2=UUID.fromString(rid) ;
 		Query query= em.createNamedQuery("SelectOneRezept");
 		query.setParameter("rid", rid2);
 		return query.getResultList();
+		}catch(Exception e) {
+			System.err.println("Ist Kapott"+e);
+			List<Rezept> fehler = new ArrayList<Rezept>(Arrays.asList(
+					new Rezept("","HUCH da ist was schief gelaufen \n bittekehre zum Rezept zurück ","")));
+			return fehler;
+		}
 	}
 	
-	
+	public String backToIndex() {
+		return "index";
+	}
 	
 	public DataModel<Rezept> getRezept() {
 		return rezept;
