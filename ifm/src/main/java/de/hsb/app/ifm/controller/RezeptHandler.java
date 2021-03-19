@@ -109,7 +109,6 @@ public class RezeptHandler implements Serializable {
 		Query query= em.createNamedQuery("SelectOneRezept");
 		query.setParameter("rid", rid2);
 		return query.getResultList();
-				//em.createNamedQuery("SelectOneRezept").setParameter("rid", rid2).getResultList();	
 	}
 	
 	
