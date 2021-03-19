@@ -1,5 +1,10 @@
 package de.hsb.app.ifm.controller;
 
+<<<<<<< Updated upstream
+=======
+import java.security.PublicKey;
+import java.sql.ResultSet;
+>>>>>>> Stashed changes
 import java.util.Iterator;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.ConfigurableNavigationHandler;
@@ -10,6 +15,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Table;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
+
+import org.eclipse.microprofile.openapi.annotations.headers.Header;
 import org.hibernate.annotations.NamedQuery;
 import de.hsb.app.ifm.model.Benutzer;
 
@@ -81,7 +88,7 @@ public class LoginHandler {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 		ConfigurableNavigationHandler nav = (ConfigurableNavigationHandler) fc.getApplication().getNavigationHandler();
-		if (session != null) {
+		if (session != null && session.getAttribute("username") != null) {
 			System.out.println(session.getAttribute("username"));
 			nav.performNavigation("allerezepte");
 		}else {

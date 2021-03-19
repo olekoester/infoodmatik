@@ -22,40 +22,39 @@ import javax.transaction.UserTransaction;
 import de.hsb.app.ifm.model.Benutzer;
 import de.hsb.app.ifm.model.Benutzer.Rolle;
 
-
 @Named
 @SessionScoped
 public class BenutzerHandler implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+	private static boolean test = true;
 	@PersistenceContext(name = "ifm-persistence-unit")
 	private EntityManager em;
-	
+
 	@Resource
 	private UserTransaction utx;
-	
+
 	public DataModel<Benutzer> getBenutzer() {
 		return benutzer;
 	}
-	
+
 	private String adminEingabe;
 	private String adminPasswort = "admin";
+
 	public String getAdminEingabe() {
 		return adminEingabe;
 	}
-
 
 	public void setAdminEingabe(String adminEingabe) {
 		this.adminEingabe = adminEingabe;
 	}
 
 	private DataModel<Benutzer> benutzer;
-	private Benutzer merkeBenutzer = new Benutzer ();
+	private Benutzer merkeBenutzer = new Benutzer();
+
 	public Benutzer getMerkeBenutzer() {
 		return merkeBenutzer;
 	}
-	
 
 	public EntityManager getEm() {
 		return em;
@@ -73,7 +72,6 @@ public class BenutzerHandler implements Serializable {
 		this.utx = utx;
 	}
 
-
 	public void setMerkeBenutzer(Benutzer merkeBenutzer) {
 		this.merkeBenutzer = merkeBenutzer;
 	}
@@ -82,7 +80,6 @@ public class BenutzerHandler implements Serializable {
 		this.benutzer = benutzer;
 	}
 
-		
 	@PostConstruct
 	public void init() {
 		try {
@@ -94,9 +91,14 @@ public class BenutzerHandler implements Serializable {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		em.persist(new Benutzer("Hugo", "1234"));
-		benutzer = new ListDataModel<> ();
+		if (test) {
+			em.persist(new Benutzer("Hugo", "1234"));
+
+			test = false;
+		}
+		benutzer = new ListDataModel<>();
 		benutzer.setWrappedData(em.createNamedQuery("SelectBenutzer").getResultList());
+
 		try {
 			utx.commit();
 		} catch (SecurityException e) {
@@ -119,7 +121,7 @@ public class BenutzerHandler implements Serializable {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Transactional
 	public String speichern() {
 		System.out.println(adminEingabe);
@@ -128,21 +130,21 @@ public class BenutzerHandler implements Serializable {
 		String password = merkeBenutzer.getPassword();
 		System.out.println(username + "		" + password);
 		System.out.println(benutzer);
-		if(benutzer != null) {
-			for(Iterator <Benutzer> it = benutzer.iterator(); it.hasNext();) {
+		if (benutzer != null) {
+			for (Iterator<Benutzer> it = benutzer.iterator(); it.hasNext();) {
 				Benutzer nutzer = it.next();
-				if(username.equals(nutzer.getUsername())) {
+				if (username.equals(nutzer.getUsername())) {
 					available = false;
 				}
 			}
 		}
-		if(!(adminEingabe.equals(""))) {
-			if(adminEingabe.equals(adminPasswort)) {
+		if (!(adminEingabe.equals(""))) {
+			if (adminEingabe.equals(adminPasswort)) {
 				merkeBenutzer.setRolle(Rolle.ADMIN);
-			}else {
+			} else {
 				available = false;
 			}
-		}else {
+		} else {
 			merkeBenutzer.setRolle(Rolle.NUTZER);
 		}
 		System.out.println(merkeBenutzer.getRolle());
@@ -156,12 +158,11 @@ public class BenutzerHandler implements Serializable {
 			return "registrieren";
 		}
 	}
-	
-	
+
 	public String neu(Benutzer b) {
 		System.out.println("Ich bin die Methode neu() und wurde gerade aufgerufen");
 		merkeBenutzer = new Benutzer();
 		return "registrieren";
 	}
-		
+
 }
