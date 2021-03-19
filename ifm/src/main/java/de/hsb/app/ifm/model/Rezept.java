@@ -12,7 +12,7 @@ import javax.persistence.NamedQuery;
 @NamedQuery(name="SelectRezept", query="Select r from Rezept r")
 @NamedQuery(name="SelectOneRezept", query=" Select r from Rezept r where r.rid=: rid")
 @NamedQuery(name="SelectRezept2", query=" Select r from Rezept r where r.name= 'Pudding'")
-//@NamedQuery(name="SucheRezept")
+@NamedQuery(name="SucheRezept", query=" Select r from Rezept r where r.name=: name")
 @Entity
 
 @SessionScoped
@@ -36,9 +36,10 @@ public class Rezept implements Serializable {
 	public Rezept(String name, String zutaten, String beschreibung,  String tags) {
 		super();
 		this.name=name;
+		this.zutaten=zutaten;
 		this.beschreibung=beschreibung;
 		this.tags=tags;
-		this.zutaten=zutaten;
+		
 		
 	}
 

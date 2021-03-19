@@ -120,13 +120,15 @@ public class RezeptHandler implements Serializable {
 		}
 	}
 	
-//	public List<Rezept> SucheRezept(String SuchAnfrage){
-//		
-//		Query query= em.createNamedQuery("SucheRezept");
-//		query.setParameter("name", SuchAnfrage);
-//		System.out.println(query.getResultList());
-//		return query.getResultList();
-//	}
+	public List<Rezept> sucheRezept(String SuchAnfrage){
+	
+		Query query= em.createNamedQuery("SucheRezept");
+		query.setParameter("name", SuchAnfrage);
+		System.out.println(query.getResultList());
+		return query.getResultList();
+		
+		
+	}
 	
 	public String backToIndex() {
 		return "index";

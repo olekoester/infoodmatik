@@ -10,15 +10,15 @@
     	<title><ui:insert name="pageTitle">Rezepte erstellen</ui:insert></title>
     </h:head>
     
-    <h:body>
+    <h:body onload="#{rezeptHandler.neu(rezept)}">
      <nav>
 	<div class="logo">
 		<a href="index.xhtml">IFM</a>
 	</div>
 	<ul class="nav-links">
 		<li><div class="suchleiste">
-			<form action="#{rezeptHandler.SucheRezept(SuchAnfrage)}">
-			<input type="text" value= "SuchAnfrage" name="suche">
+			<form action="suchergebnisse.xhtml">
+			<input type="text" value= "" name="suche">
 			</input>
 			<button type="submit">Suchen</button>
 			</form>
@@ -47,9 +47,15 @@
     				<h:message for="name" styleClass="message" />
     			</h:panelGroup>
     			
+    			<h:outputLabel value="Zutaten des Rezeptes:" for="zutaten"/>
+    			
+    			<h:panelGroup>
+    				<h:inputText  id="zutaten" styleClass="text-input" value="#{rezeptHandler.merkeRezept.zutaten}"  required="true" requiredMessage="Bitte geben SIE eine Rezeptzutaten ein :)" />
+    				<h:message for="zutaten" styleClass="message" />
+    			</h:panelGroup>
+    			
     			<h:outputLabel value="Beschreibung des Rezeptes:" for="beschreibung"/>
     			
-    		
     			<h:panelGroup>
     				<h:inputText  id="beschreibung" styleClass="text-input" value="#{rezeptHandler.merkeRezept.beschreibung}"  required="true" requiredMessage="Bitte geben SIE eine Rezeptbeschreibung ein :)" />
     				<h:message for="beschreibung" styleClass="message" />
