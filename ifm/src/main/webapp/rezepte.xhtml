@@ -17,8 +17,15 @@
 	</div>
 	<ul class="nav-links">
 		<li><a href="allerezepte.xhtml">Rezepte</a></li>
-		<li><a href="login.xhtml">Login</a></li>
-		<li><a href="registrieren.xhtml">Registrieren</a></li>
+		<c:if test="#{not loggedIn}">
+			<li><a href="login.xhtml">Login</a></li>
+			<li><a href="registrieren.xhtml">Registrieren</a></li>
+		</c:if>
+		<c:if test="#{loggedIn}">
+			<li><h:form>
+					<h:commandButton action="#{loginHandler.logout()}" value="Logout" />
+				</h:form></li>
+		</c:if>
 	</ul>
 
 	</nav>
