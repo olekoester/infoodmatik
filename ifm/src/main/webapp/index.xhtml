@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core">
 <h:head>
 	<link rel="stylesheet" href="css/nav.css"></link>
 	<title><ui:insert name="pageTitle">Startseite</ui:insert></title>
@@ -22,8 +23,15 @@
 				</form>
 			</div></li>
 		<li><a href="allerezepte.xhtml">Rezepte</a></li>
-		<li><a href="login.xhtml">Login</a></li>
-		<li><a href="registrieren.xhtml">Registrieren</a></li>
+		<c:if test="#{not loggedIn}">
+			<li><a href="login.xhtml">Login</a></li>
+			<li><a href="registrieren.xhtml">Registrieren</a></li>
+		</c:if>
+			<c:if test="#{loggedIn}">
+			<li><h:form>
+					<h:commandButton action="#{loginHandler.logout()}" value="Logout" />
+				</h:form></li>
+		</c:if>
 	</ul>
 	</nav>
 	<br />
