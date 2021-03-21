@@ -9,6 +9,8 @@
 	<link rel="stylesheet" href="css/registrieren.css" />
 </h:head>
 <h:body>
+	<f:event listener="#{loginHandler.checkLoggedIn()}"
+		type="preRenderView"></f:event>
 	<nav>
 	<div class="logo">
 		<a href="index.xhtml">IFM</a>
