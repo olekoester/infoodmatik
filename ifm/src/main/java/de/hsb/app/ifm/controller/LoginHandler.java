@@ -64,7 +64,7 @@ public class LoginHandler {
 					loggedIn = true;
 					FacesContext fc = FacesContext.getCurrentInstance();
 					HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
-					session.setAttribute("username", username);
+					session.setAttribute("id", session.getId());
 				}
 			}
 		}
@@ -84,7 +84,6 @@ public class LoginHandler {
 		}else {
 			System.out.println("Fehler beim Logout");
 		}
-
 		return "index";
 	}
 
@@ -94,8 +93,7 @@ public class LoginHandler {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 		ConfigurableNavigationHandler nav = (ConfigurableNavigationHandler) fc.getApplication().getNavigationHandler();
-		if (session != null && session.getAttribute("username") != null) {
-			System.out.println(session.getAttribute("username"));
+		if (session != null && session.getAttribute("id").equals(session.getId())) {
 			nav.performNavigation("user");
 		}else {
 			nav.performNavigation("index");

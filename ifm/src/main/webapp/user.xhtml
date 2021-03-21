@@ -22,8 +22,9 @@
 				</form>
 			</div></li>
 		<li><a href="allerezepte.xhtml">Rezepte</a></li>
-		<li><a href="index.xhtml" onclick="#{loginHandler.logout()}">Logout</a></li>
-		<!--  <h:commandLink value="Logout" action="#{loginHandler.logout()}"></h:commandLink>-->
+		<li><h:form>
+				<h:commandButton action="#{loginHandler.logout()}" value="Logout" />
+			</h:form></li>
 	</ul>
 	</nav>
 	<br />
