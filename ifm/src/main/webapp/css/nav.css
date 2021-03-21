@@ -63,6 +63,7 @@ a {
 	font-weight: bold;
 	text-decoration: none;
 	letter-spacing: 3px;
+	cursor: pointer;
 }
 
 body {
