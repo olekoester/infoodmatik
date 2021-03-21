@@ -17,6 +17,7 @@
 	</div>
 	<ul class="nav-links">
 		<li><a href="allerezepte.xhtml">Rezepte</a></li>
+		<ui:param name="loggedIn" value="#{loginHandler.checkLogin()}" />
 		<c:if test="#{not loggedIn}">
 			<li><a href="login.xhtml">Login</a></li>
 			<li><a href="registrieren.xhtml">Registrieren</a></li>
@@ -36,28 +37,22 @@
 
 	<ui:param name="uuid" value="#{param['rid']}" />
 	<c:if test="#{not empty uuid}">
-	
-       <ui:repeat var="rezept" value="#{rezeptHandler.getOneRezept(uuid)}" varStatus="status">
-       
-       <div id="rname" >
-		#{rezept.name}
-		</div>
-		<div id="rzutaten" >
-		#{rezept.zutaten}
-		</div>
-		<div id="rbeschreibung" >
-		#{rezept.beschreibung}
-		</div>
-		<div id="rtags" >
-		#{rezept.tags}
-		</div>
-     
-       </ui:repeat>
+
+		<ui:repeat var="rezept" value="#{rezeptHandler.getOneRezept(uuid)}"
+			varStatus="status">
+
+			<div id="rname">#{rezept.name}</div>
+			<div id="rzutaten">#{rezept.zutaten}</div>
+			<div id="rbeschreibung">#{rezept.beschreibung}</div>
+			<div id="rtags">#{rezept.tags}</div>
+
+		</ui:repeat>
 	</c:if>
 	<c:if test="#{empty uuid}">
-	<h:form>
-	<h:commandButton action="#{rezeptHandler.backToIndex()}" value="Zurück zu Home" />
-	</h:form>
+		<h:form>
+			<h:commandButton action="#{rezeptHandler.backToIndex()}"
+				value="Zurück zu Home" />
+		</h:form>
 	</c:if>
 
 </h:body>

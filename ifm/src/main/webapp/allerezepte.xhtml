@@ -24,6 +24,7 @@
 				</form>
 			</div></li>
 		<li><a href="allerezepte.xhtml">Rezepte</a></li>
+		<ui:param name="loggedIn" value="#{loginHandler.checkLogin()}" />
 		<c:if test="#{not loggedIn}">
 			<li><a href="login.xhtml">Login</a></li>
 			<li><a href="registrieren.xhtml">Registrieren</a></li>
