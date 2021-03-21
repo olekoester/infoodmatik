@@ -4,6 +4,7 @@ font-family: "Poppins", sans-serif;
     font-size:120%;
     font-weight:bold;
   
+  
 }
 
 .panelGrit{
@@ -13,11 +14,14 @@ font-family: "Poppins", sans-serif;
     margin-top:10px;
     float:left;
     width:100%;
+   
 }
 
 td{
     float: left;
-    width:15%;    
+    width:93%;
+    margin-left:20px; 
+    margin-right:90px;
     
 }
 
@@ -35,7 +39,11 @@ td{
     
 }
 
-
+#zutaten{
+    display:inline-block;
+    padding:15px 10px;
+    line-height:140%;
+}
 
 
 
