@@ -42,7 +42,7 @@
 	<br />
 	<br />
 
-
+	<div class="border"> 
 	<h:form>
 		<h:panelGrid id="eid" class="panelGrit" columns="2">
 			<f:facet calss="Bez" name="header"></f:facet>
@@ -59,7 +59,7 @@
 			<h:outputLabel value="Zutaten des Rezeptes:" for="zutaten" />
 
 			<h:panelGroup>
-				<h:inputTextarea id="zutaten" styleClass="text-input"
+				<h:inputTextarea rows="5" id="zutaten" styleClass="text-input"
 					value="#{rezeptHandler.merkeRezept.zutaten}" required="true"
 					requiredMessage="Bitte geben SIE eine Rezeptzutaten ein :)" />
 				<h:message for="zutaten" styleClass="message" />
@@ -68,7 +68,7 @@
 			<h:outputLabel value="Beschreibung des Rezeptes:" for="beschreibung" />
 
 			<h:panelGroup>
-				<h:inputTextarea id="beschreibung" styleClass="text-input"
+				<h:inputTextarea rows="10" id="beschreibung" styleClass="text-input"
 					value="#{rezeptHandler.merkeRezept.beschreibung}" required="true"
 					requiredMessage="Bitte geben SIE eine Rezeptbeschreibung ein :)" />
 				<h:message for="beschreibung" styleClass="message" />
@@ -88,7 +88,7 @@
 				value="Speichern" outcome="allerezepte.xhtml" />
 		</h:panelGrid>
 	</h:form>
-
+	</div>
 
 
 </h:body>

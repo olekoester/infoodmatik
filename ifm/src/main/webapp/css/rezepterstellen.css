@@ -7,6 +7,13 @@ font-family: "Poppins", sans-serif;
   
 }
 
+.border{
+    
+    margin: 20px;
+    padding: 10px;
+    background-color:white;
+}
+
 .panelGrit{
     
     margin-left: 40px;
@@ -34,8 +41,12 @@ td{
 
 .text-input{
     
+    
    float:left;
     width:100%;
+    font-size: 20px;
+    resize:none;
+    font-family: "Poppins", sans-serif;
     
 }
 
