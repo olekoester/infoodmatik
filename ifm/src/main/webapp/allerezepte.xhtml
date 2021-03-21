@@ -1,53 +1,61 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:c="http://java.sun.com/jsp/jstl/core"
-    xmlns:fn="http://java.sun.com/jsp/jstl/functions">
- 
-    <h:head>
-        <link rel="stylesheet" href="css/nav.css"></link>
-        <link rel="stylesheet" href="css/allerezepte.css"></link>
-        <title><ui:insert name="pageTitle">Rezepte</ui:insert></title>
-    </h:head>
-    <h:body>
-    <nav>
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+<h:head>
+	<link rel="stylesheet" href="css/nav.css"></link>
+	<link rel="stylesheet" href="css/allerezepte.css"></link>
+	<title><ui:insert name="pageTitle">Rezepte</ui:insert></title>
+</h:head>
+<h:body>
+	<nav>
 	<div class="logo">
 		<a href="index.xhtml">IFM</a>
 	</div>
 	<ul class="nav-links">
+		<li><div class="suchleiste">
+				<form action="suchergebnisse.xhtml">
+					<input type="text" value="" name="suche"> </input>
+					<button type="submit">Suchen</button>
+				</form>
+			</div></li>
 		<li><a href="allerezepte.xhtml">Rezepte</a></li>
 		<li><a href="login.xhtml">Login</a></li>
 		<li><a href="registrieren.xhtml">Registrieren</a></li>
 	</ul>
-	
-	</nav>
-    <br/>
-	<br/>
-	<br/>
-	<br/>
-       
-       <ui:repeat var="rezept" value="#{rezeptHandler.rezept}" varStatus="status">
-       
-       <div class="rezept" >
 
-       <table>
-       
-       
-       	<tr>
-       		<td class="Ueberschrift"><a href="rezepte.xhtml?rid=#{rezept.rid}">#{rezept.name}</a> </td>
-       		
-       	</tr>
-       	<tr>
-       	<td><a href="rezepte.xhtml?rid=#{rezept.rid}">#{rezept.tags}</a></td>
-       	</tr>
-       
-       	</table>
-       	 <a href="rezepte.xhtml?rid=#{rezept.rid}"/>
-       	</div>
-       </ui:repeat>
-        
-        
-    </h:body>
+	</nav>
+	<br />
+	<br />
+	<br />
+	<br />
+
+	<ui:repeat var="rezept" value="#{rezeptHandler.rezept}"
+		varStatus="status">
+
+		<div class="rezept">
+
+			<table>
+
+
+				<tr>
+					<td class="Ueberschrift"><a
+						href="rezepte.xhtml?rid=#{rezept.rid}">#{rezept.name}</a></td>
+
+				</tr>
+				<tr>
+					<td><a href="rezepte.xhtml?rid=#{rezept.rid}">#{rezept.tags}</a></td>
+				</tr>
+
+			</table>
+			<a href="rezepte.xhtml?rid=#{rezept.rid}" />
+		</div>
+	</ui:repeat>
+
+
+</h:body>
 </html>
