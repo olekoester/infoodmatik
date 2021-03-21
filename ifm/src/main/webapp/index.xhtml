@@ -9,8 +9,6 @@
 	<title><ui:insert name="pageTitle">Startseite</ui:insert></title>
 </h:head>
 <h:body>
-	<f:event listener="#{loginHandler.checkLoggedIn()}"
-		type="preRenderView"></f:event>
 	<nav>
 	<div class="logo">
 		<a href="index.xhtml">IFM</a>
@@ -23,11 +21,12 @@
 				</form>
 			</div></li>
 		<li><a href="allerezepte.xhtml">Rezepte</a></li>
+		<ui:param name="loggedIn" value="#{loginHandler.checkLogin()}" />
 		<c:if test="#{not loggedIn}">
 			<li><a href="login.xhtml">Login</a></li>
 			<li><a href="registrieren.xhtml">Registrieren</a></li>
 		</c:if>
-			<c:if test="#{loggedIn}">
+		<c:if test="#{loggedIn}">
 			<li><h:form>
 					<h:commandButton action="#{loginHandler.logout()}" value="Logout" />
 				</h:form></li>

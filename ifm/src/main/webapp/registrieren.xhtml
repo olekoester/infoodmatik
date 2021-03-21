@@ -4,6 +4,9 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 <ui:insert name="content">
+
+<f:event listener="#{loginHandler.checkLoggedIn()}"
+		type="preRenderView"></f:event>
 	<h:head>
 		<link rel="stylesheet" href="css/nav.css" type="text/css" />
 		<link rel="stylesheet" href="css/registrieren.css" type="text/css" />
@@ -17,11 +20,6 @@
 				}
 			}
 		</h:outputScript>
-		<style>
-		   #adminPass{
-		   	 display: none;
-		   }
-		</style>
 	</h:head>
 	<h:body>
 		<nav>

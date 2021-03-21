@@ -95,12 +95,8 @@ public class LoginHandler {
 		ConfigurableNavigationHandler nav = (ConfigurableNavigationHandler) fc.getApplication().getNavigationHandler();
 		if (session != null && session.getAttribute("id") != null){
 			if(session.getAttribute("id").equals(session.getId())){
-				nav.performNavigation("user");
-			}else {
 				nav.performNavigation("index");
 			}
-		}else {
-			nav.performNavigation("index");
 		}
 	}
 	
