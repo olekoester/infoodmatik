@@ -36,20 +36,27 @@
         
         <ui:param name="suche" value="#{param['suche']}" />
         <c:if test="#{not empty suche}">
-        <h:dataTable var="rezept" value="#{rezeptHandler.sucheRezept(suche)}"
-			rowClasses="odd,even" headerClass="header">
-			<f:facet name="title">Titel</f:facet>
-			<h:column>
-				<h:outputText value="#{rezept.name}" />
-			</h:column>
-		
-			<f:facet name="tags">Tags</f:facet>
-			<h:column>
-				<h:outputText value="#{rezept.tags}" />
-			</h:column>
-			
-			<h:commandLink action="#{rezeptHandler.getOneRezept(rezept.rid)}" value="Dahin"/>
-		</h:dataTable>
+        
+        <ui:repeat var="rezept" value="#{rezeptHandler.sucheRezept(suche)}"
+        varStatus="status">
+        
+        <div class="rezept">
+        	<table>
+        		<tr>
+        			<td class="Ueberschrift">
+        				<a href="rezepte.xhtml?rid=#{rezept.rid}">#{rezept.name}</a>
+        			</td>
+        		</tr>
+        		
+        		<tr>
+        			<td>
+        				<a href="rezepte.xhtml?rid=#{rezept.rid}">#{rezept.tags}</a>
+        			</td>
+        		</tr>
+        	</table>
+        	<a href="rezepte.xhtml?rid=#{rezept.rid}" />
+        </div>
+        </ui:repeat>
         </c:if>
     </h:body>
 </html>
