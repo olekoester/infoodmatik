@@ -8,6 +8,8 @@
 	<title><ui:insert name="pageTitle">Startseite</ui:insert></title>
 </h:head>
 <h:body>
+	<f:event listener="#{loginHandler.checkLoggedIn()}"
+		type="preRenderView"></f:event>
 	<nav>
 	<div class="logo">
 		<a href="index.xhtml">IFM</a>
@@ -21,7 +23,7 @@
 			</div></li>
 		<li><a href="allerezepte.xhtml">Rezepte</a></li>
 		<li><a href="index.xhtml" onclick="#{loginHandler.logout()}">Logout</a></li>
-				<!--  <h:commandLink value="Logout" action="#{loginHandler.logout()}"></h:commandLink>-->
+		<!--  <h:commandLink value="Logout" action="#{loginHandler.logout()}"></h:commandLink>-->
 	</ul>
 	</nav>
 	<br />

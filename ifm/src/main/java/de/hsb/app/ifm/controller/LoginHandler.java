@@ -97,6 +97,8 @@ public class LoginHandler {
 		if (session != null && session.getAttribute("username") != null) {
 			System.out.println(session.getAttribute("username"));
 			nav.performNavigation("user");
+		}else {
+			nav.performNavigation("index");
 		}
 
 	}
