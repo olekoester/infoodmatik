@@ -6,6 +6,7 @@
 <ui:insert name="content">
 	<h:head>
 		<link rel="stylesheet" href="css/nav.css" type="text/css" />
+		<link rel="stylesheet" href="css/registrieren.css" type="text/css" />
 		<h:outputScript>
 			function changeValue(){
 				let element = document.getElementById("adminPass").style.display;
@@ -33,49 +34,44 @@
 			<li><a href="registrieren.xhtml">Registrieren</a></li>
 		</ul>
 		</nav>
-		<br></br>
-		<br></br>
-		<br></br>
-		<br></br>
-		<br></br>
-		<br></br>
-		<br></br>
-		<br></br>
-		<h:form>
-			<h:panelGrid columns="2" headerClass="header" footerClass="footer">
-
-				<h:outputLabel value="Username:" for="username" />
-				<h:panelGroup>
-					<h:inputText id="username"
+		<div class="main" align="center">
+		<p class="sign" align="center">Login</p>
+		<h:form class="form1">
+			<h:panelGrid align="center" columns="2" headerClass="header" footerClass="footer">
+				<h:outputLabel align="center" value="Username:" for="username" />
+				<h:panelGroup align="center">
+					<h:inputText class="un" align="center" id="username"
 						value="#{benutzerHandler.merkeBenutzer.username}" required="true"
 						requiredMessage="Eingabe fehlt" />
 					<h:message for="username" styleClass="message" />
 				</h:panelGroup>
-				<h:outputLabel value="Password:" for="password" />
-				<h:panelGroup>
-					<h:inputSecret id="password"
+				
+				<h:outputLabel align="center" value="Password:" for="password" />
+				<h:panelGroup align="center">
+					<h:inputSecret class="pass" align="center" id="password"
 						value="#{benutzerHandler.merkeBenutzer.password}" required="true"
 						requiredMessage="Eingabe fehlt" />
 					<h:message for="password" styleClass="message" />
 				</h:panelGroup>
-				<h:panelGroup>
+				
+				<h:panelGroup align="center">
 					<h:selectBooleanCheckbox id="box" onchange="changeValue()">
 						Admin
 					</h:selectBooleanCheckbox>
-					<br />
-					<br />
 					<div id="adminPass">
 						<h:outputLabel value="Admin-Passwort: " />
-						<h:inputSecret id="text" value="#{benutzerHandler.adminEingabe}"/>
+						<h:inputSecret class="un" id="text" value="#{benutzerHandler.adminEingabe}"/>
 					</div>
+					
 				</h:panelGroup>
 				<h:form>
-					<h:commandButton id="button"
+					<h:commandButton class="submit" align="center" id="button"
 						action="#{benutzerHandler.speichern()}" outcome="index"
 						value="Speichern" />
 				</h:form>
 			</h:panelGrid>
 		</h:form>
+		</div>
 	</h:body>
 </ui:insert>
 </html>
