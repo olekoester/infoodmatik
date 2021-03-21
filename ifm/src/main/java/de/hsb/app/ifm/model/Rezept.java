@@ -30,20 +30,26 @@ public class Rezept implements Serializable {
 	@GeneratedValue
 	private UUID rid;
 	public Rezept() {
-		
+
 	}
-	
+
 	public Rezept(String name, String zutaten, String beschreibung,  String tags) {
 		super();
 		this.name=name;
 		this.zutaten=zutaten;
 		this.beschreibung=beschreibung;
 		this.tags=tags;
-		
-		
+
+
 	}
 
 	public String getZutaten() {
+		
+		if(zutaten!=null) {
+
+			String tmpZutaten=zutaten.replaceAll("\n", "<br/>");
+			return tmpZutaten;
+		}
 		return zutaten;
 	}
 
@@ -60,6 +66,13 @@ public class Rezept implements Serializable {
 	}
 
 	public String getBeschreibung() {
+
+		if(beschreibung!=null) {
+
+			String tmpBeschreibung=beschreibung.replaceAll("\n", "<br/>");
+			return tmpBeschreibung;
+
+		}
 		return beschreibung;
 	}
 

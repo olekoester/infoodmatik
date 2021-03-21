@@ -59,7 +59,7 @@
 			<h:outputLabel value="Zutaten des Rezeptes:" for="zutaten" />
 
 			<h:panelGroup>
-				<h:inputText id="zutaten" styleClass="text-input"
+				<h:inputTextarea id="zutaten" styleClass="text-input"
 					value="#{rezeptHandler.merkeRezept.zutaten}" required="true"
 					requiredMessage="Bitte geben SIE eine Rezeptzutaten ein :)" />
 				<h:message for="zutaten" styleClass="message" />
@@ -68,7 +68,7 @@
 			<h:outputLabel value="Beschreibung des Rezeptes:" for="beschreibung" />
 
 			<h:panelGroup>
-				<h:inputText id="beschreibung" styleClass="text-input"
+				<h:inputTextarea id="beschreibung" styleClass="text-input"
 					value="#{rezeptHandler.merkeRezept.beschreibung}" required="true"
 					requiredMessage="Bitte geben SIE eine Rezeptbeschreibung ein :)" />
 				<h:message for="beschreibung" styleClass="message" />

@@ -42,8 +42,17 @@
 			varStatus="status">
 
 			<div id="rname">#{rezept.name}</div>
-			<div id="rzutaten">#{rezept.zutaten}</div>
-			<div id="rbeschreibung">#{rezept.beschreibung}</div>
+			
+			<div id="rzutaten">
+				<h:outputText escape="false" value="#{rezept.zutaten}" />
+			</div>
+			
+			
+			<div id="rbeschreibung">
+				<h:outputText escape="false" value="#{rezept.beschreibung}" />
+			</div>
+			
+			
 			<div id="rtags">#{rezept.tags}</div>
 
 		</ui:repeat>
