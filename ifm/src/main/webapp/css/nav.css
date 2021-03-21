@@ -57,7 +57,12 @@ a {
 	display: flex;
 	background: rgb(26, 26, 26);
 	color: rgba(226, 226, 226);
-	width: 30%;
+	width: 100%;
+	border: none;
+	font-size: 14px;
+	font-weight: bold;
+	text-decoration: none;
+	letter-spacing: 3px;
 }
 
 body {
