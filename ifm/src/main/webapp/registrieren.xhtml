@@ -5,7 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <ui:insert name="content">
 
-<f:event listener="#{loginHandler.checkLoggedIn()}"
+	<f:event listener="#{loginHandler.checkLoggedIn()}"
 		type="preRenderView"></f:event>
 	<h:head>
 		<link rel="stylesheet" href="css/nav.css" type="text/css" />
@@ -33,42 +33,45 @@
 		</ul>
 		</nav>
 		<div class="main" align="center">
-		<p class="sign" align="center">Registrieren</p>
-		<h:form class="form1">
-			<h:panelGrid align="center" columns="2" headerClass="header" footerClass="footer">
-				<h:outputLabel align="center" value="Username:" for="username" />
-				<h:panelGroup align="center">
-					<h:inputText class="un" align="center" id="username"
-						value="#{benutzerHandler.merkeBenutzer.username}" required="true"
-						requiredMessage="Eingabe fehlt" />
-					<h:message for="username" styleClass="message" />
-				</h:panelGroup>
-				
-				<h:outputLabel align="center" value="Password:" for="password" />
-				<h:panelGroup align="center">
-					<h:inputSecret class="pass" align="center" id="password"
-						value="#{benutzerHandler.merkeBenutzer.password}" required="true"
-						requiredMessage="Eingabe fehlt" />
-					<h:message for="password" styleClass="message" />
-				</h:panelGroup>
-				
-				<h:panelGroup align="center">
-					<h:selectBooleanCheckbox id="box" onchange="changeValue()">
+			<p class="sign" align="center">Registrieren</p>
+			<h:form class="form1">
+				<h:panelGrid align="center" columns="2" headerClass="header"
+					footerClass="footer">
+					<h:outputLabel class="txt" align="center" value="Username:"
+						for="username" />
+					<h:panelGroup align="center">
+						<h:inputText class="un" align="center" id="username"
+							value="#{benutzerHandler.merkeBenutzer.username}" required="true"
+							requiredMessage="Eingabe fehlt" />
+						<h:message for="username" styleClass="message" />
+					</h:panelGroup>
+
+					<h:outputLabel class="txt" align="center" value="Password:" for="password" />
+					<h:panelGroup align="center">
+						<h:inputSecret class="pass" align="center" id="password"
+							value="#{benutzerHandler.merkeBenutzer.password}" required="true"
+							requiredMessage="Eingabe fehlt" />
+						<h:message for="password" styleClass="message" />
+					</h:panelGroup>
+
+					<h:panelGroup align="center">
+						<h:selectBooleanCheckbox id="box" onchange="changeValue()">
 						Admin
 					</h:selectBooleanCheckbox>
-					<div id="adminPass">
-						<h:outputLabel value="Admin-Passwort: " />
-						<h:inputSecret class="un" id="text" value="#{benutzerHandler.adminEingabe}"/>
-					</div>
-					
-				</h:panelGroup>
-				<h:form>
-					<h:commandButton class="submit" align="center" id="button"
-						action="#{benutzerHandler.speichern()}" outcome="index"
-						value="Speichern" />
-				</h:form>
-			</h:panelGrid>
-		</h:form>
+						<div id="adminPass">
+							<h:outputLabel value="Admin-Passwort: " />
+							<h:inputSecret class="un" id="text"
+								value="#{benutzerHandler.adminEingabe}" />
+						</div>
+
+					</h:panelGroup>
+					<h:form>
+						<h:commandButton class="submit" align="center" id="button"
+							action="#{benutzerHandler.speichern()}" outcome="index"
+							value="Speichern" />
+					</h:form>
+				</h:panelGrid>
+			</h:form>
 		</div>
 	</h:body>
 </ui:insert>

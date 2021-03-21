@@ -53,7 +53,16 @@ a {
     text-decoration: none
 }
 
+.lgout {
+	display: flex;
+	background: rgb(26, 26, 26);
+	color: rgba(226, 226, 226);
+	width: 30%;
+}
+
 body {
 	margin: 0;
 }
+
+
 
