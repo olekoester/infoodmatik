@@ -97,10 +97,28 @@ public class LoginHandler {
 			if(session.getAttribute("id").equals(session.getId())){
 				nav.performNavigation("user");
 			}else {
-				System.out.println("Falsch eingeloggt");
+				nav.performNavigation("index");
 			}
 		}else {
 			nav.performNavigation("index");
+		}
+	}
+	
+	
+	public boolean checkLogin() {
+		System.out.println("checkLogin");
+		System.out.println(loggedIn);
+		FacesContext fc = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+		ConfigurableNavigationHandler nav = (ConfigurableNavigationHandler) fc.getApplication().getNavigationHandler();
+		if (session != null && session.getAttribute("id") != null){
+			if(session.getAttribute("id").equals(session.getId())){
+				return true;
+			}else {
+				return false;
+			}
+		}else {
+			return false;
 		}
 	}
 }
