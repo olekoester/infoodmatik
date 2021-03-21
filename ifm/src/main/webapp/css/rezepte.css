@@ -1,10 +1,29 @@
+body{
+	    font-family: "Poppins", sans-serif;
+}
 #rname{
 	text-align: center;
 	display:block;
+	background-color:rgba(25,25,25);
+	color:white;
+	font-size:26px;
+	letter-spacing: 3px;
+	border:2px solid;
+	border-color:white;
+	
 }
 #rbeschreibung{
+	display:block;
+	background-color:orange;
+	font-size:26px;
+	letter-spacing: 3px;
+	border:1px;
+	border-color:white;
 	
 }
 #rtags{
+	
+}
+#rzutaten{
 	
 }
