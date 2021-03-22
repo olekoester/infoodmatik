@@ -124,8 +124,15 @@ public class RezeptHandler implements Serializable {
 		//String suche = "Select r from Rezept r where r.name like '" + SuchAnfrage +"%'";
 		Query query= em.createNamedQuery("SucheRezept");
 		query.setParameter("name", SuchAnfrage);
-		System.out.println(query.getResultList());
-		return query.getResultList();
+		List<Rezept> erg = query.getResultList();
+		System.out.println(erg);
+		if(erg.isEmpty()) {
+			System.out.println("null");
+			List<Rezept> fehler = new ArrayList<Rezept>(Arrays.asList(
+					new Rezept("Die Suche ergab leider keinen Treffer","", "","")));
+			return fehler;
+		}
+		return erg;
 		
 		
 	}
