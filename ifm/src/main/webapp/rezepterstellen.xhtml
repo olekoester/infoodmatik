@@ -12,7 +12,7 @@
 	<script type="text/javascript" src="js/PreventGoBack.js" />
 </h:head>
 <h:body onload="#{rezeptHandler.neu(rezept)}">
-		<f:event listener="#{loginHandler.checkLoggedIn()}"
+		<f:event listener="#{loginHandler.checkLoggedIn(true)}"
 		type="preRenderView"></f:event>
 	<nav>
 	<div class="logo">
