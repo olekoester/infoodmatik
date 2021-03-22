@@ -103,12 +103,3 @@ a {
 #adminPass {
 	display: none;
 }
-
-.txt {
-	width: 76%;
-	font-weight: 700;
-	font-size: 14px;
-/*	margin-bottom: 10px; 
-	margin-left: 46px; */
-	text-align: center;
-}
