@@ -60,6 +60,7 @@ public class LoginHandler {
 					FacesContext fc = FacesContext.getCurrentInstance();
 					HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
 					session.setAttribute("id", session.getId());
+					session.setAttribute("username", username);
 				}
 			}
 		}

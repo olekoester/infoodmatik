@@ -40,6 +40,14 @@ public class Rezept implements Serializable {
 	@JoinColumn(name =  "benutzer_id")
 	private Benutzer benutzer;
 	
+	public Benutzer getBenutzer() {
+		return benutzer;
+	}
+
+	public void setBenutzer(Benutzer benutzer) {
+		this.benutzer = benutzer;
+	}
+
 	public Rezept() {
 
 	}

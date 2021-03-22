@@ -15,7 +15,7 @@ import de.hsb.app.ifm.model.Benutzer;
 
 
 @NamedQuery(name="SelectBenutzer", query="Select b from Benutzer b")
-
+@NamedQuery(name="SearchByName", query="Select b from Benutzer b where b.username = :username")
 //@Table(uniqueConstraints={@UniqueConstraint(columnNames={"username"})})
 @Entity
 public class Benutzer implements Serializable {

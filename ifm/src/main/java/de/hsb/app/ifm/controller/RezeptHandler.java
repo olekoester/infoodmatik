@@ -9,12 +9,14 @@ import java.util.UUID;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.servlet.http.HttpSession;
 import javax.transaction.HeuristicMixedException;
 import javax.transaction.HeuristicRollbackException;
 import javax.transaction.NotSupportedException;
@@ -23,8 +25,7 @@ import javax.transaction.SystemException;
 import javax.transaction.Transactional;
 import javax.transaction.UserTransaction;
 
-
-
+import de.hsb.app.ifm.model.Benutzer;
 import de.hsb.app.ifm.model.Rezept;
 
 @Named
@@ -92,17 +93,23 @@ public class RezeptHandler implements Serializable {
 	
 	@Transactional
 	public String speichern() {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+		String username = (String) session.getAttribute("username");
+		Query query = em.createNamedQuery("SearchByName");
+		query.setParameter("username", username);
+		Benutzer nutzer = (Benutzer) query.getSingleResult();
+		System.out.println(nutzer.getUsername());
+		merkeRezept.setBenutzer(nutzer);
 		merkeRezept = em.merge(merkeRezept);
 		em.persist(merkeRezept);
 		rezept.setWrappedData(em.createNamedQuery("SelectRezept").getResultList());
 		return "index";
 	}
 	
-	public String neu(Rezept r) {
+	public void neu(Rezept r) {
 		System.out.println("Methode neu() von RezeptHandler");
 		merkeRezept = new Rezept();
-		return "index";
-		
 	}
 	
 	@Transactional
