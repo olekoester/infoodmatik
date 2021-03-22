@@ -1,12 +1,16 @@
 package de.hsb.app.ifm.model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 import javax.enterprise.context.SessionScoped;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 
 @NamedQuery(name="SelectRezept", query="Select r from Rezept r")
@@ -26,9 +30,16 @@ public class Rezept implements Serializable {
 	private String beschreibung;
 	private String zutaten;
 	private String tags;
+	
 	@Id
 	@GeneratedValue
 	private UUID rid;
+	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name =  "benutzer_id")
+	private Benutzer benutzer;
+	
 	public Rezept() {
 
 	}
