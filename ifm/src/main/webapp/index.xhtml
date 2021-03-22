@@ -7,11 +7,14 @@
 <h:head>
 	<link rel="stylesheet" href="css/nav.css"></link>
 	<title><ui:insert name="pageTitle">Startseite</ui:insert></title>
+	<script type="text/javascript" src="js/PreventGoBack.js"/>
 </h:head>
 <h:body>
 	<nav>
 	<div class="logo">
-		<a href="index.xhtml">IFM</a>
+		<a href="index.xhtml">
+		 <img src="pictures/InFoodMatikname.png" alt="Infoodmatik" style="width: 250px"/>
+		</a>
 	</div>
 	<ul class="nav-links">
 		<li><div class="suchleiste">
@@ -21,12 +24,11 @@
 				</form>
 			</div></li>
 		<li><a href="allerezepte.xhtml">Rezepte</a></li>
-		<ui:param name="loggedIn" value="#{loginHandler.checkLogin()}" />
-		<c:if test="#{not loggedIn}">
+		<c:if test="#{not loginHandler.checkLogin()}">
 			<li><a href="login.xhtml">Login</a></li>
 			<li><a href="registrieren.xhtml">Registrieren</a></li>
 		</c:if>
-		<c:if test="#{loggedIn}">
+		<c:if test="#{loginHandler.checkLogin()}">
 			<li><h:form>
 					<h:commandButton class="lgout" action="#{loginHandler.logout()}"
 						value="Logout" />

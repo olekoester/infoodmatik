@@ -9,12 +9,15 @@
 	<link rel="stylesheet" href="css/nav.css"></link>
 	<link rel="stylesheet" href="css/rezepterstellen.css"></link>
 	<title><ui:insert name="pageTitle">Rezepte erstellen</ui:insert></title>
+	<script type="text/javascript" src="js/PreventGoBack.js"/>
 </h:head>
 <h:body onload="#{rezeptHandler.neu(rezept)}">
 	<ui:param name="loggedIn" value="#{loginHandler.checkLogin()}" />
 	<nav>
 	<div class="logo">
-		<a href="index.xhtml">IFM</a>
+		<a href="index.xhtml">
+		 <img src="pictures/InFoodMatikname.png" alt="Infoodmatik" style="width: 250px"/>
+		</a>
 	</div>
 	<ul class="nav-links">
 		<li><div class="suchleiste">
