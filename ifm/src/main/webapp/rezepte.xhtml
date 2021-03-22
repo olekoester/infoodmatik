@@ -40,41 +40,38 @@
 	</ul>
 
 	</nav>
-	<br />
-	<br />
-	<br />
-	<br />
+	<div class="container">
+		<ui:param name="uuid" value="#{param['rid']}" />
+		<c:if test="#{not empty uuid}">
 
-	<ui:param name="uuid" value="#{param['rid']}" />
-	<c:if test="#{not empty uuid}">
+			<ui:repeat var="rezept" value="#{rezeptHandler.getOneRezept(uuid)}"
+				varStatus="status">
 
-		<ui:repeat var="rezept" value="#{rezeptHandler.getOneRezept(uuid)}"
-			varStatus="status">
+				<div id="rname">#{rezept.name}</div>
 
-			<div id="rname">#{rezept.name}</div>
-
-			<div id="rzutaten">
-				Zutaten:<br />
-				<h:outputText escape="false" value="#{rezept.zutaten}" />
-			</div>
+				<div id="rzutaten">
+					Zutaten:<br />
+					<h:outputText escape="false" value="#{rezept.zutaten}" />
+				</div>
 
 
-			<div id="rbeschreibung">
-				Beschreibung:<br />
-				<h:outputText escape="false" value="#{rezept.beschreibung}" />
-			</div>
+				<div id="rbeschreibung">
+					Beschreibung:<br />
+					<h:outputText escape="false" value="#{rezept.beschreibung}" />
+				</div>
 
 
-			<div id="rtags">Tags: #{rezept.tags}</div>
+				<div id="rtags">Tags: #{rezept.tags}</div>
 
-		</ui:repeat>
-	</c:if>
-	<c:if test="#{empty uuid}">
-		<h:form>
-			<h:commandButton action="#{rezeptHandler.backToIndex()}"
-				value="Zurück zu Home" />
-		</h:form>
-	</c:if>
+			</ui:repeat>
+		</c:if>
+		<c:if test="#{empty uuid}">
+			<h:form>
+				<h:commandButton action="#{rezeptHandler.backToIndex()}"
+					value="Zurück zu Home" />
+			</h:form>
+		</c:if>
+	</div>
 
 </h:body>
 </html>

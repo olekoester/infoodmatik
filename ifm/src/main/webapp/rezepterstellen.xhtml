@@ -9,14 +9,14 @@
 	<link rel="stylesheet" href="css/nav.css"></link>
 	<link rel="stylesheet" href="css/rezepterstellen.css"></link>
 	<title><ui:insert name="pageTitle">Rezepte erstellen</ui:insert></title>
-	<script type="text/javascript" src="js/PreventGoBack.js"/>
+	<script type="text/javascript" src="js/PreventGoBack.js" />
 </h:head>
 <h:body onload="#{rezeptHandler.neu(rezept)}">
 	<ui:param name="loggedIn" value="#{loginHandler.checkLogin()}" />
 	<nav>
 	<div class="logo">
-		<a href="index.xhtml">
-		 <img src="pictures/InFoodMatikname.png" alt="Infoodmatik" style="width: 250px"/>
+		<a href="index.xhtml"> <img src="pictures/InFoodMatikname.png"
+			alt="Infoodmatik" style="width: 250px" />
 		</a>
 	</div>
 	<ul class="nav-links">
@@ -33,64 +33,64 @@
 		</c:if>
 		<c:if test="#{loggedIn}">
 			<li><h:form>
-					<h:commandButton class="lgout" action="#{loginHandler.logout()}" value="Logout" />
+					<h:commandButton class="lgout" action="#{loginHandler.logout()}"
+						value="Logout" />
 				</h:form></li>
 		</c:if>
 	</ul>
 	</nav>
 
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
+	<div class="container">
+		<div class="border">
+			<h:form>
+				<h:panelGrid id="eid" class="panelGrit" columns="2">
+					<f:facet calss="Bez" name="header"></f:facet>
+					<h:outputLabel class="Bez" value="Name des Rezeptes:" for="name" />
 
-	<div class="border"> 
-	<h:form>
-		<h:panelGrid id="eid" class="panelGrit" columns="2">
-			<f:facet calss="Bez" name="header"></f:facet>
-			<h:outputLabel class="Bez" value="Name des Rezeptes:" for="name" />
+					<h:panelGroup>
+						<h:inputText id="name" styleClass="text-input"
+							value="#{rezeptHandler.merkeRezept.name}" maxlength="50"
+							required="true"
+							requiredMessage="Bitte geben SIE einen Rezeptnamen ein :)" />
+						<h:message for="name" styleClass="message" />
+					</h:panelGroup>
 
-			<h:panelGroup>
-				<h:inputText id="name" styleClass="text-input"
-					value="#{rezeptHandler.merkeRezept.name}" maxlength="50"
-					required="true"
-					requiredMessage="Bitte geben SIE einen Rezeptnamen ein :)" />
-				<h:message for="name" styleClass="message" />
-			</h:panelGroup>
+					<h:outputLabel value="Zutaten des Rezeptes:" for="zutaten" />
 
-			<h:outputLabel value="Zutaten des Rezeptes:" for="zutaten" />
+					<h:panelGroup>
+						<h:inputTextarea rows="5" id="zutaten" styleClass="text-input"
+							value="#{rezeptHandler.merkeRezept.zutaten}" required="true"
+							requiredMessage="Bitte geben SIE eine Rezeptzutaten ein :)" />
+						<h:message for="zutaten" styleClass="message" />
+					</h:panelGroup>
 
-			<h:panelGroup>
-				<h:inputTextarea rows="5" id="zutaten" styleClass="text-input"
-					value="#{rezeptHandler.merkeRezept.zutaten}" required="true"
-					requiredMessage="Bitte geben SIE eine Rezeptzutaten ein :)" />
-				<h:message for="zutaten" styleClass="message" />
-			</h:panelGroup>
+					<h:outputLabel value="Beschreibung des Rezeptes:"
+						for="beschreibung" />
 
-			<h:outputLabel value="Beschreibung des Rezeptes:" for="beschreibung" />
-
-			<h:panelGroup>
-				<h:inputTextarea rows="10" id="beschreibung" styleClass="text-input"
-					value="#{rezeptHandler.merkeRezept.beschreibung}" required="true"
-					requiredMessage="Bitte geben SIE eine Rezeptbeschreibung ein :)" />
-				<h:message for="beschreibung" styleClass="message" />
-			</h:panelGroup>
+					<h:panelGroup>
+						<h:inputTextarea rows="10" id="beschreibung"
+							styleClass="text-input"
+							value="#{rezeptHandler.merkeRezept.beschreibung}" required="true"
+							requiredMessage="Bitte geben SIE eine Rezeptbeschreibung ein :)" />
+						<h:message for="beschreibung" styleClass="message" />
+					</h:panelGroup>
 
 
-			<h:outputLabel value="Tags des Rezeptes:" for="tags" />
-			<h:panelGroup>
-				<h:inputText id="tags" styleClass="text-input"
-					value="#{rezeptHandler.merkeRezept.tags}" maxlength="50"
-					required="true"
-					requiredMessage="Bitte geben SIE die Rezepttags ein :)" />
-				<h:message for="tags" styleClass="message" />
-			</h:panelGroup>
+					<h:outputLabel value="Tags des Rezeptes:" for="tags" />
+					<h:panelGroup>
+						<h:inputText id="tags" styleClass="text-input"
+							value="#{rezeptHandler.merkeRezept.tags}" maxlength="50"
+							required="true"
+							requiredMessage="Bitte geben SIE die Rezepttags ein :)" />
+						<h:message for="tags" styleClass="message" />
+					</h:panelGroup>
 
-			<h:commandButton id="speichern" action="#{rezeptHandler.speichern()}"
-				value="Speichern" outcome="allerezepte.xhtml" />
-		</h:panelGrid>
-	</h:form>
+					<h:commandButton id="speichern"
+						action="#{rezeptHandler.speichern()}" value="Speichern"
+						outcome="allerezepte.xhtml" />
+				</h:panelGrid>
+			</h:form>
+		</div>
 	</div>
 
 

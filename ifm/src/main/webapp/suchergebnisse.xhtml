@@ -8,14 +8,14 @@
 	<link rel="stylesheet" href="css/nav.css"></link>
 	<link rel="stylesheet" href="css/allerezepte.css"></link>
 	<title><ui:insert name="pageTitle">Rezepte</ui:insert></title>
-	<script type="text/javascript" src="js/PreventGoBack.js"/>
+	<script type="text/javascript" src="js/PreventGoBack.js" />
 </h:head>
 <h:body>
 
 	<nav>
 	<div class="logo">
-		<a href="index.xhtml">
-		 <img src="pictures/InFoodMatikname.png" alt="Infoodmatik" style="width: 250px"/>
+		<a href="index.xhtml"> <img src="pictures/InFoodMatikname.png"
+			alt="Infoodmatik" style="width: 250px" />
 		</a>
 	</div>
 	<ul class="nav-links">
@@ -33,38 +33,36 @@
 		</c:if>
 		<c:if test="#{loggedIn}">
 			<li><h:form>
-					<h:commandButton class="lgout" action="#{loginHandler.logout()}" value="Logout" />
+					<h:commandButton class="lgout" action="#{loginHandler.logout()}"
+						value="Logout" />
 				</h:form></li>
 		</c:if>
 	</ul>
 
 	</nav>
-	<br />
-	<br />
-	<br />
-	<br />
+	<div class="container">
+		<ui:param name="suche" value="#{param['suche']}" />
+		<c:if test="#{not empty suche}">
 
-	<ui:param name="suche" value="#{param['suche']}" />
-	<c:if test="#{not empty suche}">
+			<ui:repeat var="rezept" value="#{rezeptHandler.sucheRezept(suche)}"
+				varStatus="status">
 
-		<ui:repeat var="rezept" value="#{rezeptHandler.sucheRezept(suche)}"
-			varStatus="status">
+				<div class="rezept">
+					<table>
+						<tr>
+							<td class="Ueberschrift"><a
+								href="rezepte.xhtml?rid=#{rezept.rid}">#{rezept.name}</a></td>
+						</tr>
 
-			<div class="rezept">
-				<table>
-					<tr>
-						<td class="Ueberschrift"><a
-							href="rezepte.xhtml?rid=#{rezept.rid}">#{rezept.name}</a></td>
-					</tr>
-
-					<tr>
-						<td><a href="rezepte.xhtml?rid=#{rezept.rid}">#{rezept.tags}</a>
-						</td>
-					</tr>
-				</table>
-				<a href="rezepte.xhtml?rid=#{rezept.rid}" />
-			</div>
-		</ui:repeat>
-	</c:if>
+						<tr>
+							<td><a href="rezepte.xhtml?rid=#{rezept.rid}">#{rezept.tags}</a>
+							</td>
+						</tr>
+					</table>
+					<a href="rezepte.xhtml?rid=#{rezept.rid}" />
+				</div>
+			</ui:repeat>
+		</c:if>
+	</div>
 </h:body>
 </html>

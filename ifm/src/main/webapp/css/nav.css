@@ -2,7 +2,7 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 500;
+    z-index: 2;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -66,8 +66,11 @@ a {
 	cursor: pointer;
 }
 
-body {
+.container {
 	margin: 0;
+	z-index: auto;
+	margin-top: 13%;
+	
 }
 
 
