@@ -87,7 +87,7 @@ public class LoginHandler {
 		return "index";
 	}
 
-	public void checkLoggedIn() {
+	public void checkLoggedIn(boolean checkLogin) {
 		System.out.println("checkLogin");
 		System.out.println(loggedIn);
 		FacesContext fc = FacesContext.getCurrentInstance();
