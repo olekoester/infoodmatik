@@ -7,26 +7,21 @@ font-family: "Poppins", sans-serif;
   
 }
 
-.border{
-    
-    margin: 20px;
-    padding: 10px;
-    background-color:white;
-}
+
 
 .panelGrit{
     
     margin-left: 40px;
-    margin-right:40px;
+    margin-right:20px;
     margin-top:10px;
     float:left;
-    width:100%;
+    width:90%;
    
 }
 
 td{
     float: left;
-    width:93%;
+    width:100%;
     margin-left:20px; 
     margin-right:90px;
     
