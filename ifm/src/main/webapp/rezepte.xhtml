@@ -8,17 +8,23 @@
 	<link rel="stylesheet" href="css/nav.css"></link>
 	<link rel="stylesheet" href="css/rezepte.css"></link>
 	<title><ui:insert name="pageTitle">Rezepte</ui:insert></title>
-	<script type="text/javascript" src="js/PreventGoBack.js"/>
+	<script type="text/javascript" src="js/PreventGoBack.js" />
 </h:head>
 <h:body>
 
 	<nav>
 	<div class="logo">
-		<a href="index.xhtml">
-		 <img src="pictures/InFoodMatikname.png" alt="Infoodmatik" style="width: 250px"/>
+		<a href="index.xhtml"> <img src="pictures/InFoodMatikname.png"
+			alt="Infoodmatik" style="width: 250px" />
 		</a>
 	</div>
 	<ul class="nav-links">
+		<li><div class="suchleiste">
+				<form action="suchergebnisse.xhtml">
+					<input type="text" name="suche"> </input>
+					<button type="submit">Suchen</button>
+				</form>
+			</div></li>
 		<li><a href="allerezepte.xhtml">Rezepte</a></li>
 		<ui:param name="loggedIn" value="#{loginHandler.checkLogin()}" />
 		<c:if test="#{not loggedIn}">
@@ -27,7 +33,8 @@
 		</c:if>
 		<c:if test="#{loggedIn}">
 			<li><h:form>
-					<h:commandButton class="lgout" action="#{loginHandler.logout()}" value="Logout" />
+					<h:commandButton class="lgout" action="#{loginHandler.logout()}"
+						value="Logout" />
 				</h:form></li>
 		</c:if>
 	</ul>
@@ -45,24 +52,21 @@
 			varStatus="status">
 
 			<div id="rname">#{rezept.name}</div>
-			
+
 			<div id="rzutaten">
-			Zutaten:<br />
+				Zutaten:<br />
 				<h:outputText escape="false" value="#{rezept.zutaten}" />
 			</div>
-			
-			
+
+
 			<div id="rbeschreibung">
-			Beschreibung:<br />
+				Beschreibung:<br />
 				<h:outputText escape="false" value="#{rezept.beschreibung}" />
 			</div>
-			
-			
-			<div id="rtags">
-			Tags:
-			#{rezept.tags}
-			</div>
-			
+
+
+			<div id="rtags">Tags: #{rezept.tags}</div>
+
 		</ui:repeat>
 	</c:if>
 	<c:if test="#{empty uuid}">

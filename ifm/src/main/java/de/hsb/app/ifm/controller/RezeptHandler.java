@@ -121,7 +121,7 @@ public class RezeptHandler implements Serializable {
 	}
 	
 	public List<Rezept> sucheRezept(String SuchAnfrage){
-	
+		//String suche = "Select r from Rezept r where r.name like '" + SuchAnfrage +"%'";
 		Query query= em.createNamedQuery("SucheRezept");
 		query.setParameter("name", SuchAnfrage);
 		System.out.println(query.getResultList());
