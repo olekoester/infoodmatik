@@ -47,17 +47,22 @@
 			<div id="rname">#{rezept.name}</div>
 			
 			<div id="rzutaten">
+			Zutaten:<br />
 				<h:outputText escape="false" value="#{rezept.zutaten}" />
 			</div>
 			
 			
 			<div id="rbeschreibung">
+			Beschreibung:<br />
 				<h:outputText escape="false" value="#{rezept.beschreibung}" />
 			</div>
 			
 			
-			<div id="rtags">#{rezept.tags}</div>
-
+			<div id="rtags">
+			Tags:
+			#{rezept.tags}
+			</div>
+			
 		</ui:repeat>
 	</c:if>
 	<c:if test="#{empty uuid}">

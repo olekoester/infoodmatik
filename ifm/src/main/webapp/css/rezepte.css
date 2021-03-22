@@ -4,26 +4,31 @@ body{
 #rname{
 	text-align: center;
 	display:block;
-	background-color:rgba(25,25,25);
-	color:white;
-	font-size:26px;
+	font-size:40px;
 	letter-spacing: 3px;
 	border:2px solid;
 	border-color:white;
+	padding-left:5px;
 	
 }
 #rbeschreibung{
+	margin-top:10px;
 	display:block;
-	background-color:orange;
 	font-size:26px;
-	letter-spacing: 3px;
-	border:1px;
-	border-color:white;
+	padding-left:5px;
 	
 }
 #rtags{
-	
+	font-size:10px;
+	margin-top:10px;
+	border-color:white;
+	padding-left:5px;
 }
 #rzutaten{
-	
+	font-size:26px;
+	margin-top:10px;
+	border:2px solid;
+	border-color:white;
+	padding-left:5px;
+	letter-spacing: 2px;
 }
