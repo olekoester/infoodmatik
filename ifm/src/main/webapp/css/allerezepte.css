@@ -9,7 +9,16 @@ body {
 	height: 100px;
 	color: white;
 	margin: 5px;
+	box-shadow: 5px 10px rgba(70, 70, 70);
+	margin-top:10px;
+	margin-right:10px;
+	transition-duration: 0.8s;
+	border-radius:4px;
 }
+.rezept:hover{
+	box-shadow: 10px 10px rgba(100, 0, 0);
+	
+	}
 
 .Ueberschrift {
 	background-color: rgba(25, 25, 25);
@@ -18,8 +27,8 @@ body {
 	text-align: center;
 	display: block;
 	letter-spacing: 5px;
+	border-radius:4px;
 }
-
 div a {
 	display: block;
 	height: 100%;
