@@ -32,10 +32,10 @@
 			<li><a href="registrieren.xhtml">Registrieren</a></li>
 		</c:if>
 		<c:if test="#{loggedIn}">
+			<li><a href="rezepterstellen.xhtml">Erstellen</a></li>
 			<li><h:form>
 					<h:commandButton class="lgout" action="#{loginHandler.logout()}"
 						value="Logout" />
-					<li><a href="rezepterstellen.xhtml">Erstellen</a></li>
 				</h:form></li>
 		</c:if>
 	</ul>

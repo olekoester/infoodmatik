@@ -11,31 +11,31 @@
 </h:head>
 <h:body>
 	<nav>
-		<div class="logo">
-			<a href="index.xhtml"> <img src="pictures/InFoodMatikname.png"
-				alt="Infoodmatik" style="width: 250px" />
-			</a>
-		</div>
-		<ul class="nav-links">
-			<li><div class="suchleiste">
-					<form action="suchergebnisse.xhtml">
-						<input type="text" value="" name="suche" required="true"> </input>
-						<button type="submit">Suchen</button>
-					</form>
-				</div></li>
-			<li><a href="allerezepte.xhtml">Rezepte</a></li>
-			<c:if test="#{not loginHandler.checkLogin()}">
-				<li><a href="login.xhtml">Login</a></li>
-				<li><a href="registrieren.xhtml">Registrieren</a></li>
-			</c:if>
-			<c:if test="#{loginHandler.checkLogin()}">
-				<li><h:form>
-						<h:commandButton class="lgout" action="#{loginHandler.logout()}"
-							value="Logout" />
-					</h:form></li>
-					<li><a href="rezepterstellen.xhtml">Erstellen</a></li>
-			</c:if>
-		</ul>
+	<div class="logo">
+		<a href="index.xhtml"> <img src="pictures/InFoodMatikname.png"
+			alt="Infoodmatik" style="width: 250px" />
+		</a>
+	</div>
+	<ul class="nav-links">
+		<li><div class="suchleiste">
+				<form action="suchergebnisse.xhtml">
+					<input type="text" value="" name="suche" required="true"> </input>
+					<button type="submit">Suchen</button>
+				</form>
+			</div></li>
+		<li><a href="allerezepte.xhtml">Rezepte</a></li>
+		<c:if test="#{not loginHandler.checkLogin()}">
+			<li><a href="login.xhtml">Login</a></li>
+			<li><a href="registrieren.xhtml">Registrieren</a></li>
+		</c:if>
+		<c:if test="#{loginHandler.checkLogin()}">
+			<li><a href="rezepterstellen.xhtml">Erstellen</a></li>
+			<li><h:form>
+					<h:commandButton class="lgout" action="#{loginHandler.logout()}"
+						value="Logout" />
+				</h:form></li>
+		</c:if>
+	</ul>
 	</nav>
 	<div class="container">
 		<p>Hallo von Index und Hans Jurgen</p>
