@@ -151,12 +151,21 @@ public class RezeptHandler implements Serializable {
 		Query query = em.createNamedQuery("FindUserId");
 		query.setParameter("username", username);
 		UUID id = (UUID) query.getSingleResult();
-		System.out.println("HIER IST DIE USERID NICHT ÜBERSEHEN" + id);
-		//query = em.createNamedQuery("FindOwnRecipes");
-		//query.setParameter("benutzer_id", id);
 		query = em.createNamedQuery("FindOwnRecipes");
 		query.setParameter("benutzer_id", id);
 		return query.getResultList();
+	}
+	
+	@Transactional
+	public String delete(UUID id) {
+		System.out.println("HAAAAAAAAAAAAAAAAAAAALO von Delete");
+		Query query = em.createNamedQuery("SelectOneRezept");
+		query.setParameter("rid", id);
+		merkeRezept = (Rezept) query.getSingleResult();
+		merkeRezept = em.merge(merkeRezept);
+		em.remove(merkeRezept);
+		rezept.setWrappedData(em.createNamedQuery("SelectRezept").getResultList());
+		return "eigenerezepte";
 	}
 	
 	public String backToIndex() {

@@ -36,8 +36,9 @@
 	</ul>
 	</nav>
 	<div class="container">
-		<h:dataTable var="rezept" value="#{rezeptHandler.findeEigeneRezepte()}"
-			rowClasses="odd,even" headerClass="header">
+		<h:dataTable var="rezept"
+			value="#{rezeptHandler.findeEigeneRezepte()}" rowClasses="odd,even"
+			headerClass="header">
 			<f:facet name="header">Eigene Rezpte</f:facet>
 			<h:column>
 				<f:facet name="header">Rezeptname</f:facet>
@@ -50,8 +51,14 @@
 			<h:column>
 				<f:facet name="header">Tags</f:facet>
 				<div align="center">
-					<h:outputText value="#{rezept.tags}"/>
+					<h:outputText value="#{rezept.tags}" />
 				</div>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Löschen</f:facet>
+				<h:form>
+					<h:commandButton action="#{rezeptHandler.delete(rezept.rid)}" value="Löschen" />
+				</h:form>
 			</h:column>
 		</h:dataTable>
 	</div>
