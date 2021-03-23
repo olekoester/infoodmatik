@@ -92,8 +92,9 @@ public class BenutzerHandler implements Serializable {
 			e1.printStackTrace();
 		}
 		if (test) {
-			em.persist(new Benutzer("Hugo", "1234"));
-
+			Benutzer tmp = new Benutzer("Hugo", "1234");
+			tmp.setRolle(Rolle.ADMIN);
+			em.persist(tmp);
 			test = false;
 		}
 		benutzer = new ListDataModel<>();

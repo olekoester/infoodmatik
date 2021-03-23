@@ -39,7 +39,7 @@
 		<h:dataTable var="rezept"
 			value="#{rezeptHandler.findeEigeneRezepte()}" rowClasses="odd,even"
 			headerClass="header">
-			<f:facet name="header">Eigene Rezpte</f:facet>
+			<f:facet name="header">Erstellte Rezepte</f:facet>
 			<h:column>
 				<f:facet name="header">Rezeptname</f:facet>
 				<h:outputText value="#{rezept.name}" />
@@ -58,6 +58,12 @@
 				<f:facet name="header">Löschen</f:facet>
 				<h:form>
 					<h:commandButton action="#{rezeptHandler.delete(rezept.rid)}" value="Löschen" />
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Bearbeiten</f:facet>
+				<h:form>
+					<h:commandButton action="#{rezeptHandler.edit(rezept.rid)}" value="Bearbeiten" />
 				</h:form>
 			</h:column>
 		</h:dataTable>

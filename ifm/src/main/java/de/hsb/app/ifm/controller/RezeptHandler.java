@@ -45,7 +45,7 @@ public class RezeptHandler implements Serializable {
 
 	private DataModel<Rezept> rezept;
 	private static boolean firstExecute = true;
-	private Rezept merkeRezept = new Rezept ();
+	private Rezept merkeRezept = new Rezept();
 
 	@PostConstruct
 	public void init() {
@@ -58,16 +58,25 @@ public class RezeptHandler implements Serializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if(firstExecute) {
-		em.persist(new Rezept("Müslii ", "1x Milch \n 1x Müsli"," 1.Schritt Fügen Sie das Müsli  \n 2.Schritt Milch hinzufügen \n 3.Schritt Anschließend alles in eine Schüssel geben \n 4.Schritt Guten Appetit ", "Müsli, Vegetarisch, Milch, Bio, Vegan, lowCarb"));		
-		em.persist(new Rezept("Pudding", "1x Puddingmischung \n 1x Milch \n 1x Topf", "1.Schritt Milch kochen \n 2. Schritt Puddingmischung dazu geben \n 3.Schritt Essen", "Milch, Pudding, Vegetarisch, yay" ));	
-		em.persist(new Rezept("KrümelEistee", "1x Wasser \n 1x Eisteekrümel \n 1x Wasserkocher", "1.Schritt Wasser in Wasserkocher kochen \n 2. Schritt Krümeltee in Tasse \n 3.Schritt Kochendes Wasser in Tasse auf Krümeltee", "Wasser, Tee, Krümel, lowCarb" ));	
-		em.persist(new Rezept("Toast", "1x Weißbrot \n 1x Toaster", "1.Schritt Weißbrot aus Verpackung \n 2. Schritt Weißbrot in Toaster \n 3.Schritt warten \n 4.Schritt Toast aus Toaster \n 5.Schritt Essen", "Toast, Weißbrot, Vegetarisch, Geister, Bio" ));
-		em.persist(new Rezept("Nix", "1x Nix" ,"1.Schritt Du machst eh nix du Faues Stück >:C", "Vegan, nix, also wirklich, da ist nix, also Langsam werde ich Wild, HALLO DU BRAUCHST HIER NICH GUCKEN, SAMMA WAS IST MIT DIR?," ));	
-		firstExecute=false;
+		if (firstExecute) {
+			em.persist(new Rezept("Müslii ", "1x Milch \n 1x Müsli",
+					" 1.Schritt Fügen Sie das Müsli  \n 2.Schritt Milch hinzufügen \n 3.Schritt Anschließend alles in eine Schüssel geben \n 4.Schritt Guten Appetit ",
+					"Müsli, Vegetarisch, Milch, Bio, Vegan, lowCarb"));
+			em.persist(new Rezept("Pudding", "1x Puddingmischung \n 1x Milch \n 1x Topf",
+					"1.Schritt Milch kochen \n 2. Schritt Puddingmischung dazu geben \n 3.Schritt Essen",
+					"Milch, Pudding, Vegetarisch, yay"));
+			em.persist(new Rezept("KrümelEistee", "1x Wasser \n 1x Eisteekrümel \n 1x Wasserkocher",
+					"1.Schritt Wasser in Wasserkocher kochen \n 2. Schritt Krümeltee in Tasse \n 3.Schritt Kochendes Wasser in Tasse auf Krümeltee",
+					"Wasser, Tee, Krümel, lowCarb"));
+			em.persist(new Rezept("Toast", "1x Weißbrot \n 1x Toaster",
+					"1.Schritt Weißbrot aus Verpackung \n 2. Schritt Weißbrot in Toaster \n 3.Schritt warten \n 4.Schritt Toast aus Toaster \n 5.Schritt Essen",
+					"Toast, Weißbrot, Vegetarisch, Geister, Bio"));
+			em.persist(new Rezept("Nix", "1x Nix", "1.Schritt Du machst eh nix du Faues Stück >:C",
+					"Vegan, nix, also wirklich, da ist nix, also Langsam werde ich Wild, HALLO DU BRAUCHST HIER NICH GUCKEN, SAMMA WAS IST MIT DIR?,"));
+			firstExecute = false;
 		}
-		//System.out.println(rezept.getRowData());
-		rezept = new ListDataModel<> ();
+		// System.out.println(rezept.getRowData());
+		rezept = new ListDataModel<>();
 		rezept.setWrappedData(em.createNamedQuery("SelectRezept").getResultList());
 		try {
 			utx.commit();
@@ -91,9 +100,9 @@ public class RezeptHandler implements Serializable {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Transactional
-	public String speichern() {
+	public String speichern() {	
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 		String username = (String) session.getAttribute("username");
@@ -107,45 +116,45 @@ public class RezeptHandler implements Serializable {
 		rezept.setWrappedData(em.createNamedQuery("SelectRezept").getResultList());
 		return "index";
 	}
-	
+
 	public void neu(Rezept r) {
 		System.out.println("Methode neu() von RezeptHandler");
 		merkeRezept = new Rezept();
 	}
-	
+
 	@Transactional
-	public List<Rezept> getOneRezept (String rid) {
+	public List<Rezept> getOneRezept(String rid) {
 		try {
-		UUID rid2=UUID.fromString(rid);
-		Query query= em.createNamedQuery("SelectOneRezept");
-		query.setParameter("rid", rid2);
-		return query.getResultList();
-		}catch(Exception e) {
-			System.err.println("Ist Kapott"+e);
+			UUID rid2 = UUID.fromString(rid);
+			Query query = em.createNamedQuery("SelectOneRezept");
+			query.setParameter("rid", rid2);
+			return query.getResultList();
+		} catch (Exception e) {
+			System.err.println("Ist Kapott" + e);
 			List<Rezept> fehler = new ArrayList<Rezept>(Arrays.asList(
-					new Rezept("","", "HUCH da ist was schief gelaufen \n bittekehre zum Rezept zurück ","")));
+					new Rezept("", "", "HUCH da ist was schief gelaufen \n bittekehre zum Rezept zurück ", "")));
 			return fehler;
 		}
 	}
-	
-	public List<Rezept> sucheRezept(String SuchAnfrage){
-		//String suche = "Select r from Rezept r where r.name like '" + SuchAnfrage +"%'";
-		Query query= em.createNamedQuery("SucheRezept");
+
+	public List<Rezept> sucheRezept(String SuchAnfrage) {
+		// String suche = "Select r from Rezept r where r.name like '" + SuchAnfrage
+		// +"%'";
+		Query query = em.createNamedQuery("SucheRezept");
 		query.setParameter("name", SuchAnfrage);
 		List<Rezept> erg = query.getResultList();
 		System.out.println(erg);
-		if(erg.isEmpty()) {
+		if (erg.isEmpty()) {
 			System.out.println("null");
-			List<Rezept> fehler = new ArrayList<Rezept>(Arrays.asList(
-					new Rezept("Die Suche ergab leider keinen Treffer","", "","")));
+			List<Rezept> fehler = new ArrayList<Rezept>(
+					Arrays.asList(new Rezept("Die Suche ergab leider keinen Treffer", "", "", "")));
 			return fehler;
 		}
 		return erg;
-		
-		
+
 	}
-	
-	public List<Rezept> findeEigeneRezepte(){
+
+	public List<Rezept> findeEigeneRezepte() {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 		String username = (String) session.getAttribute("username");
@@ -153,17 +162,17 @@ public class RezeptHandler implements Serializable {
 		query.setParameter("username", username);
 		Benutzer nutzer = (Benutzer) query.getSingleResult();
 		Rolle rolle = nutzer.getRolle();
-		if(rolle == Rolle.NUTZER) {
-		UUID id = nutzer.getId();
-		query = em.createNamedQuery("FindOwnRecipes");
-		query.setParameter("benutzer_id", id);
-		return query.getResultList();
-		}else {
+		if (rolle == Rolle.NUTZER) {
+			UUID id = nutzer.getId();
+			query = em.createNamedQuery("FindOwnRecipes");
+			query.setParameter("benutzer_id", id);
+			return query.getResultList();
+		} else {
 			query = em.createNamedQuery("SelectRezept");
 			return query.getResultList();
 		}
 	}
-	
+
 	@Transactional
 	public String delete(UUID id) {
 		System.out.println("HAAAAAAAAAAAAAAAAAAAALO von Delete");
@@ -175,41 +184,53 @@ public class RezeptHandler implements Serializable {
 		rezept.setWrappedData(em.createNamedQuery("SelectRezept").getResultList());
 		return "eigenerezepte";
 	}
-	
+
+	@Transactional
+	public String edit(UUID id) {
+		Query query = em.createNamedQuery("SelectOneRezept");
+		query.setParameter("rid", id);
+		merkeRezept = (Rezept) query.getSingleResult();
+		return "rezepterstellen";
+	}
+
 	public String backToIndex() {
 		return "index";
 	}
-	
+
 	public DataModel<Rezept> getRezept() {
 		return rezept;
 	}
+
 	public void setRezept(DataModel<Rezept> rezept) {
 		this.rezept = rezept;
 	}
+
 	public EntityManager getEm() {
 		return em;
 	}
+
 	public void setEm(EntityManager em) {
 		this.em = em;
 	}
+
 	public UserTransaction getUtx() {
 		return utx;
 	}
+
 	public void setUtx(UserTransaction utx) {
 		this.utx = utx;
 	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
 	public Rezept getMerkeRezept() {
 		return merkeRezept;
 	}
+
 	public void setMerkeRezept(Rezept merkeRezept) {
 		this.merkeRezept = merkeRezept;
 	}
 
-	
 }
-
-
-
