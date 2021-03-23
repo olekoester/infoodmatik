@@ -117,7 +117,7 @@ public class RezeptHandler implements Serializable {
 		return "index";
 	}
 
-	public void neu(Rezept r) {
+	public void neu() {
 		System.out.println("Methode neu() von RezeptHandler");
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);

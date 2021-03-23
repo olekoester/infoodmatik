@@ -11,7 +11,7 @@
 	<title><ui:insert name="pageTitle">Rezepte erstellen</ui:insert></title>
 	<script type="text/javascript" src="js/PreventGoBack.js" />
 </h:head>
-<h:body onload="#{rezeptHandler.neu(rezept)}">
+<h:body onload="#{rezeptHandler.neu()}">
 	<f:event listener="#{loginHandler.checkLoggedIn(true)}"
 		type="preRenderView"></f:event>
 	<nav>
