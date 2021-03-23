@@ -176,9 +176,7 @@ public class RezeptHandler implements Serializable {
 	@Transactional
 	public String delete(UUID id) {
 		System.out.println("HAAAAAAAAAAAAAAAAAAAALO von Delete");
-		Query query = em.createNamedQuery("SelectOneRezept");
-		query.setParameter("rid", id);
-		merkeRezept = (Rezept) query.getSingleResult();
+		merkeRezept = em.find(Rezept.class, id);
 		merkeRezept = em.merge(merkeRezept);
 		em.remove(merkeRezept);
 		rezept.setWrappedData(em.createNamedQuery("SelectRezept").getResultList());
