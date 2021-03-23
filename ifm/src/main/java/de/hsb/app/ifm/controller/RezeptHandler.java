@@ -102,7 +102,7 @@ public class RezeptHandler implements Serializable {
 	}
 
 	@Transactional
-	public String speichern() {	
+	public String speichern() {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 		String username = (String) session.getAttribute("username");
@@ -119,7 +119,16 @@ public class RezeptHandler implements Serializable {
 
 	public void neu(Rezept r) {
 		System.out.println("Methode neu() von RezeptHandler");
-		merkeRezept = new Rezept();
+		FacesContext fc = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+		if (session.getAttribute("rid") != null) {
+			String rid = (String) session.getAttribute("rid");
+			UUID id = UUID.fromString(rid);
+			merkeRezept = em.find(Rezept.class, id);
+			session.removeAttribute("rid");
+		} else {
+			merkeRezept = new Rezept();
+		}
 	}
 
 	@Transactional
@@ -185,9 +194,9 @@ public class RezeptHandler implements Serializable {
 
 	@Transactional
 	public String edit(UUID id) {
-		Query query = em.createNamedQuery("SelectOneRezept");
-		query.setParameter("rid", id);
-		merkeRezept = (Rezept) query.getSingleResult();
+		FacesContext fc = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+		session.setAttribute("rid", id.toString());
 		return "rezepterstellen";
 	}
 
