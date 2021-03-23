@@ -36,7 +36,7 @@ public class Rezept implements Serializable {
 	private UUID rid;
 	
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name =  "benutzer_id")
 	private Benutzer benutzer;
 	
