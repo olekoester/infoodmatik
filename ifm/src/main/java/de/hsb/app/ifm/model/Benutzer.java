@@ -13,7 +13,7 @@ import javax.persistence.UniqueConstraint;
 
 import de.hsb.app.ifm.model.Benutzer;
 
-@NamedQuery(name="FindUserId", query="Select id from Benutzer b where b.username = :username")
+@NamedQuery(name="FindUserId", query="Select id,rolle from Benutzer b where b.username = :username")
 @NamedQuery(name="SelectBenutzer", query="Select b from Benutzer b")
 @NamedQuery(name="SearchByName", query="Select b from Benutzer b where b.username = :username")
 //@Table(uniqueConstraints={@UniqueConstraint(columnNames={"username"})})

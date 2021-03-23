@@ -26,6 +26,7 @@ import javax.transaction.Transactional;
 import javax.transaction.UserTransaction;
 
 import de.hsb.app.ifm.model.Benutzer;
+import de.hsb.app.ifm.model.Benutzer.Rolle;
 import de.hsb.app.ifm.model.Rezept;
 
 @Named
@@ -148,12 +149,19 @@ public class RezeptHandler implements Serializable {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 		String username = (String) session.getAttribute("username");
-		Query query = em.createNamedQuery("FindUserId");
+		Query query = em.createNamedQuery("SearchByName");
 		query.setParameter("username", username);
-		UUID id = (UUID) query.getSingleResult();
+		Benutzer nutzer = (Benutzer) query.getSingleResult();
+		Rolle rolle = nutzer.getRolle();
+		if(rolle == Rolle.NUTZER) {
+		UUID id = nutzer.getId();
 		query = em.createNamedQuery("FindOwnRecipes");
 		query.setParameter("benutzer_id", id);
 		return query.getResultList();
+		}else {
+			query = em.createNamedQuery("SelectRezept");
+			return query.getResultList();
+		}
 	}
 	
 	@Transactional
