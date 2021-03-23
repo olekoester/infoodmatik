@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core">
+
+<h:head>
+	<link rel="stylesheet" href="css/nav.css"></link>
+	<title><ui:insert name="pageTitle">Eigene Rezepte</ui:insert></title>
+	<script type="text/javascript" src="js/PreventGoBack.js" />
+</h:head>
+
+<h:body>
+	<f:event listener="#{loginHandler.checkLoggedIn(true)}"
+		type="preRenderView"></f:event>
+	<nav>
+	<div class="logo">
+		<a href="index.xhtml"> <img src="pictures/InFoodMatikname.png"
+			alt="Infoodmatik" style="width: 250px" />
+		</a>
+	</div>
+	<ul class="nav-links">
+		<li><div class="suchleiste">
+				<form action="suchergebnisse.xhtml">
+					<input type="text" value="" name="suche" required="true"> </input>
+					<button type="submit">Suchen</button>
+				</form>
+			</div></li>
+		<li><a href="allerezepte.xhtml">Rezepte</a></li>
+		<li><a href="rezepterstellen.xhtml">Erstellen</a></li>
+		<li><h:form>
+				<h:commandButton class="lgout" action="#{loginHandler.logout()}"
+					value="Logout" />
+			</h:form></li>
+	</ul>
+	</nav>
+	<div class="container">
+		<h:dataTable var="rezept" value="#{rezeptHandler.findeEigeneRezepte()}"
+			rowClasses="odd,even" headerClass="header">
+			<f:facet name="header">Eigene Rezpte</f:facet>
+			<h:column>
+				<f:facet name="header">Rezeptname</f:facet>
+				<h:outputText value="#{rezept.name}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Benutzer</f:facet>
+				<h:outputText value="#{rezept.benutzer.username}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Tags</f:facet>
+				<div align="center">
+					<h:outputText value="#{rezept.tags}"/>
+				</div>
+			</h:column>
+		</h:dataTable>
+	</div>
+	<div id="footer">
+		<div>Infoodmatik 2021 &#169;</div>
+	</div>
+</h:body>
+</html>

@@ -15,8 +15,8 @@ import javax.persistence.NamedQuery;
 
 @NamedQuery(name="SelectRezept", query="Select r from Rezept r")
 @NamedQuery(name="SelectOneRezept", query=" Select r from Rezept r where r.rid=: rid")
-@NamedQuery(name="SelectRezept2", query=" Select r from Rezept r where r.name= 'Pudding'")
 @NamedQuery(name="SucheRezept", query=" Select r from Rezept r where charindex(UPPER(:name), UPPER(r.name))> 0")
+@NamedQuery(name="FindOwnRecipes", query="Select r from Rezept r where r.benutzer.id= :benutzer_id")
 @Entity
 
 @SessionScoped

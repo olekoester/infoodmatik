@@ -115,7 +115,7 @@ public class RezeptHandler implements Serializable {
 	@Transactional
 	public List<Rezept> getOneRezept (String rid) {
 		try {
-		UUID rid2=UUID.fromString(rid) ;
+		UUID rid2=UUID.fromString(rid);
 		Query query= em.createNamedQuery("SelectOneRezept");
 		query.setParameter("rid", rid2);
 		return query.getResultList();
@@ -142,6 +142,21 @@ public class RezeptHandler implements Serializable {
 		return erg;
 		
 		
+	}
+	
+	public List<Rezept> findeEigeneRezepte(){
+		FacesContext fc = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+		String username = (String) session.getAttribute("username");
+		Query query = em.createNamedQuery("FindUserId");
+		query.setParameter("username", username);
+		UUID id = (UUID) query.getSingleResult();
+		System.out.println("HIER IST DIE USERID NICHT ÜBERSEHEN" + id);
+		//query = em.createNamedQuery("FindOwnRecipes");
+		//query.setParameter("benutzer_id", id);
+		query = em.createNamedQuery("FindOwnRecipes");
+		query.setParameter("benutzer_id", id);
+		return query.getResultList();
 	}
 	
 	public String backToIndex() {
