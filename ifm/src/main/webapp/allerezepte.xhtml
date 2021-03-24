@@ -19,13 +19,13 @@
 		</a>
 	</div>
 	<ul class="nav-links">
-		<li><div class="suchleiste">
+		<li><div class="suche">
 				<form action="suchergebnisse.xhtml">
-					<input type="text" value="" name="suche" required="true"> </input>
+					<input id="suchfeld" type="text" value="" name="suche" required="true"> </input>
 					<button type="submit">Suchen</button>
 				</form>
 			</div></li>
-		<li><a href="allerezepte.xhtml">Rezepte</a></li>
+		<li><a id="abstand" href="allerezepte.xhtml">Rezepte</a></li>
 		<ui:param name="loggedIn" value="#{loginHandler.checkLogin()}" />
 		<c:if test="#{not loggedIn}">
 			<li><a href="login.xhtml">Login</a></li>
@@ -43,32 +43,38 @@
 
 	</nav>
 	<div class="container">
-	<h:form>
-	 	<h:commandButton action="suchergebnisse.xhtml" value="Vegetarisch" >
-	 		<f:param name="suche" value="Vegetarisch"/>
-	 		<f:param name="tags" value="true"/>
-	 	</h:commandButton>
-	 	<h:commandButton action="suchergebnisse.xhtml" value="Vegan" >
-	 		<f:param name="suche" value="Vegan"/>
-	 		<f:param name="tags" value="true"/>
-	 	</h:commandButton>
-	 	<h:commandButton action="suchergebnisse.xhtml" value="Fleisch" >
-	 		<f:param name="suche" value="Fleisch"/>
-	 		<f:param name="tags" value="true"/>
-	 	</h:commandButton>
-	 	<h:commandButton action="suchergebnisse.xhtml" value="Fisch" >
-	 		<f:param name="suche" value="Fisch"/>
-	 		<f:param name="tags" value="true"/>
-	 	</h:commandButton>
-	 	<h:commandButton action="suchergebnisse.xhtml" value="Backen" >
-	 		<f:param name="suche" value="Backen"/>
-	 		<f:param name="tags" value="true"/>
-	 	</h:commandButton>
-	 	<h:commandButton action="suchergebnisse.xhtml" value="Schnell" >
-	 		<f:param name="suche" value="Schnell"/>
-	 		<f:param name="tags" value="true"/>
-	 	</h:commandButton>
-	</h:form>
+		<h:form>
+			<h:commandButton class="button" action="suchergebnisse.xhtml"
+				value="Vegetarisch">
+				<f:param name="suche" value="Vegetarisch" />
+				<f:param name="tags" value="true" />
+			</h:commandButton>
+			<h:commandButton class="button" action="suchergebnisse.xhtml"
+				value="Vegan">
+				<f:param name="suche" value="Vegan" />
+				<f:param name="tags" value="true" />
+			</h:commandButton>
+			<h:commandButton class="button" action="suchergebnisse.xhtml"
+				value="Fleisch">
+				<f:param name="suche" value="Fleisch" />
+				<f:param name="tags" value="true" />
+			</h:commandButton>
+			<h:commandButton class="button" action="suchergebnisse.xhtml"
+				value="Fisch">
+				<f:param name="suche" value="Fisch" />
+				<f:param name="tags" value="true" />
+			</h:commandButton>
+			<h:commandButton class="button" action="suchergebnisse.xhtml"
+				value="Backen">
+				<f:param name="suche" value="Backen" />
+				<f:param name="tags" value="true" />
+			</h:commandButton>
+			<h:commandButton class="button" action="suchergebnisse.xhtml"
+				value="Schnell">
+				<f:param name="suche" value="Schnell" />
+				<f:param name="tags" value="true" />
+			</h:commandButton>
+		</h:form>
 		<ui:repeat var="rezept" value="#{rezeptHandler.rezept}"
 			varStatus="status">
 

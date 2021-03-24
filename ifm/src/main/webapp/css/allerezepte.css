@@ -28,7 +28,11 @@ body {
 	display: block;
 	letter-spacing: 5px;
 	border-radius:4px;
+	transition-duration: 0.8s;
 }
+.Ueberschrift:hover {
+	letter-spacing: 8px;
+	}
 div a {
 	display: block;
 	height: 100%;
@@ -39,4 +43,23 @@ table {
 	table-layout: fixed;
 	width: 100%;
 	padding-right:1px;
+}
+.button{
+	font-family: "Poppins", sans-serif;
+	color:white;
+	background-color:rgb(25, 25, 25);
+	width:16%;
+	border-radius:4px;
+	transition-duration: 0.8s;
+	letter-spacing: 2px;
+	margin-right:8px;
+	border:none;
+}
+.button:hover{
+	background-color:rgb(100, 0, 0);
+	letter-spacing: 4px;
+	box-shadow: 5px 5px rgba(25, 25, 25);
+}
+#suchfeld{
+
 }
