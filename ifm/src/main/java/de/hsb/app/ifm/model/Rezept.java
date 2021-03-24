@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.enterprise.context.SessionScoped;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -28,10 +29,14 @@ public class Rezept implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private String name;
+	@Column(length= 2500)
 	private String beschreibung;
+	@Column(length= 1000)
 	private String zutaten;
 	private String tags;
+	@Column(length= 2000)
 	private ArrayList<UUID> positiv = new ArrayList<UUID>() ;
+	@Column(length= 2000)
 	private ArrayList<UUID> negativ = new ArrayList<UUID>() ;
 
 
