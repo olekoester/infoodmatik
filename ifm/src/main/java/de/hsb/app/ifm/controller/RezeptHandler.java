@@ -75,7 +75,6 @@ public class RezeptHandler implements Serializable {
 					"Vegan, nix, also wirklich, da ist nix, also Langsam werde ich Wild, HALLO DU BRAUCHST HIER NICH GUCKEN, SAMMA WAS IST MIT DIR?,"));
 			firstExecute = false;
 		}
-		// System.out.println(rezept.getRowData());
 		rezept = new ListDataModel<>();
 		rezept.setWrappedData(em.createNamedQuery("SelectRezept").getResultList());
 		try {
@@ -109,7 +108,6 @@ public class RezeptHandler implements Serializable {
 		Query query = em.createNamedQuery("SearchByName");
 		query.setParameter("username", username);
 		Benutzer nutzer = (Benutzer) query.getSingleResult();
-		System.out.println(nutzer.getUsername());
 		merkeRezept.setBenutzer(nutzer);
 		merkeRezept = em.merge(merkeRezept);
 		em.persist(merkeRezept);
@@ -118,7 +116,6 @@ public class RezeptHandler implements Serializable {
 	}
 
 	public void neu() {
-		System.out.println("Methode neu() von RezeptHandler");
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 		if (session.getAttribute("rid") != null) {
@@ -152,9 +149,7 @@ public class RezeptHandler implements Serializable {
 		Query query = em.createNamedQuery("SucheRezept");
 		query.setParameter("name", SuchAnfrage);
 		List<Rezept> erg = query.getResultList();
-		System.out.println(erg);
 		if (erg.isEmpty()) {
-			System.out.println("null");
 			List<Rezept> fehler = new ArrayList<Rezept>(
 					Arrays.asList(new Rezept("Die Suche ergab leider keinen Treffer", "", "", "")));
 			return fehler;
@@ -201,7 +196,6 @@ public class RezeptHandler implements Serializable {
 
 	@Transactional
 	public String delete(UUID id) {
-		System.out.println("HAAAAAAAAAAAAAAAAAAAALO von Delete");
 		merkeRezept = em.find(Rezept.class, id);
 		merkeRezept = em.merge(merkeRezept);
 		em.remove(merkeRezept);

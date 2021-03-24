@@ -73,20 +73,21 @@ public class LoginHandler {
 	}
 
 	public String logout() {
-		System.out.println("Hallo von Logout");
-		FacesContext fc = FacesContext.getCurrentInstance();
-		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
-		if (session != null) {
-			session.invalidate();
-		} else {
-			System.out.println("Fehler beim Logout");
+		try {
+			FacesContext fc = FacesContext.getCurrentInstance();
+			HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+			if (session != null) {
+				session.invalidate();
+			} else {
+				System.out.println("Fehler beim Logout");
+			}
+		}catch (Exception e) {
+			System.out.println("Bereits ausgeloggt");
 		}
 		return "index";
 	}
 
 	public void checkLoggedIn(boolean checkLogin) {
-		System.out.println("checkLogin");
-		System.out.println(loggedIn);
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 		ConfigurableNavigationHandler nav = (ConfigurableNavigationHandler) fc.getApplication().getNavigationHandler();

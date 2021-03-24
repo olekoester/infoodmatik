@@ -125,12 +125,8 @@ public class BenutzerHandler implements Serializable {
 
 	@Transactional
 	public String speichern() {
-		System.out.println(adminEingabe);
 		boolean available = true;
 		String username = merkeBenutzer.getUsername();
-		String password = merkeBenutzer.getPassword();
-		System.out.println(username + "		" + password);
-		System.out.println(benutzer);
 		if (benutzer != null) {
 			for (Iterator<Benutzer> it = benutzer.iterator(); it.hasNext();) {
 				Benutzer nutzer = it.next();
@@ -148,8 +144,6 @@ public class BenutzerHandler implements Serializable {
 		} else {
 			merkeBenutzer.setRolle(Rolle.NUTZER);
 		}
-		System.out.println(merkeBenutzer.getRolle());
-		System.out.println(available);
 		if (available) {
 			merkeBenutzer = em.merge(merkeBenutzer);
 			em.persist(merkeBenutzer);
@@ -161,7 +155,6 @@ public class BenutzerHandler implements Serializable {
 	}
 
 	public String neu(Benutzer b) {
-		System.out.println("Ich bin die Methode neu() und wurde gerade aufgerufen");
 		merkeBenutzer = new Benutzer();
 		return "registrieren";
 	}

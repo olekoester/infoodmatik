@@ -133,7 +133,6 @@ public class Rezept implements Serializable {
 
 	public void setLike(UUID nutzer,boolean liked) {
 		boolean doppelt = false;
-		System.out.println("Die Nutzer ID is:"+nutzer);
 		if(nutzer!= null) {
 			for(int i = 0;i < positiv.size();++i) {
 				if(positiv.get(i).equals(nutzer)) {
