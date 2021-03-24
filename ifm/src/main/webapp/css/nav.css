@@ -36,6 +36,9 @@ nav {
     font-weight: bold;
     font-size: 14px;
 }
+.nav-links form {
+	align-items: left;
+}
 
 .toggle .line1 {
     transform: rotate(-45deg) translate(-5px, 6px);
@@ -50,6 +53,7 @@ nav {
 }
 
 a {
+	margin-left: 20px;
     color: rgb(226, 226, 226);
     text-decoration: none
 }
@@ -85,6 +89,10 @@ a {
 	background-color: rgb(26, 26, 26);
 	color: white;
 	text-align: center;
+}
+
+.suche {
+	align-items: left;
 }
 
 
