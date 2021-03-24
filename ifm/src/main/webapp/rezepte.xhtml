@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="css/rezepte.css"></link>
 	<title><ui:insert name="pageTitle">Rezepte</ui:insert></title>
 	<script type="text/javascript" src="js/PreventGoBack.js" />
+
 </h:head>
 <h:body>
 
@@ -62,10 +63,15 @@
 				</div>
 
 				<h:form>
-					<h:commandButton action="#{rezeptHandler.like(uuid)}" value="Daumen nach HOCH" />
+					<input type="hidden" name="rid" value="#{uuid}" />
+					<h:commandButton action="#{rezeptHandler.like(uuid,true)}"
+						value="Daumen nach HOCH" />
+						<h:commandButton action="#{rezeptHandler.like(uuid,false)}"
+						value="Daumen nach RUNTER :c" />
 				</h:form>
 				<div id="rtags">Tags: #{rezept.tags}</div>
-				<div>#{rezept.positiv}</div>
+				<div> Likes: #{rezept.positiv.size()}</div>
+				<div> Dislikes: #{rezept.negativ.size()}</div>
 			</ui:repeat>
 		</c:if>
 		<c:if test="#{empty uuid}">

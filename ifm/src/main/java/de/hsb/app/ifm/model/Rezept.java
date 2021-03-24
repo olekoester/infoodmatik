@@ -32,17 +32,18 @@ public class Rezept implements Serializable {
 	private String zutaten;
 	private String tags;
 	private ArrayList<UUID> positiv = new ArrayList<UUID>() ;
-	
-	
+	private ArrayList<UUID> negativ = new ArrayList<UUID>() ;
+
+
 	@Id
 	@GeneratedValue
 	private UUID rid;
-	
-	
+
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name =  "benutzer_id")
 	private Benutzer benutzer;
-	
+
 	public Benutzer getBenutzer() {
 		return benutzer;
 	}
@@ -66,7 +67,7 @@ public class Rezept implements Serializable {
 	}
 
 	public String getZutaten() {
-		
+
 		if(zutaten!=null) {
 
 			String tmpZutaten=zutaten.replaceAll("\n", "<br/>");
@@ -125,7 +126,31 @@ public class Rezept implements Serializable {
 		return positiv;
 	}
 
-	public void setPositiv(UUID nutzer) {
-		positiv.add(nutzer);
+	public void setLike(UUID nutzer,boolean liked) {
+		boolean doppelt = false;
+		System.out.println("Die Nutzer ID is:"+nutzer);
+		if(nutzer!= null) {
+			for(int i = 0;i < positiv.size();++i) {
+				if(positiv.get(i).equals(nutzer)) {
+					doppelt = true;
+				}
+			}
+			for(int i = 0;i < negativ.size();++i) {
+				if(negativ.get(i).equals(nutzer)) {
+					doppelt = true;
+				}
+			}
+			if(doppelt== false) {
+				if(liked) {
+				positiv.add(nutzer);
+				}else {
+					negativ.add(nutzer);
+				}
+			}
+		}
+	}
+
+	public ArrayList<UUID> getNegativ() {
+		return negativ;
 	}
 }
