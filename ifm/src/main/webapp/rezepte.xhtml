@@ -7,12 +7,10 @@
 <h:head>
 	<link rel="stylesheet" href="css/nav.css"></link>
 	<link rel="stylesheet" href="css/rezepte.css"></link>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 	<title><ui:insert name="pageTitle">Rezepte</ui:insert></title>
-	<script type="text/javascript" src="js/PreventGoBack.js" />
-
 </h:head>
 <h:body>
-
 	<nav>
 	<div class="logo">
 		<a href="index.xhtml"> <img src="pictures/InFoodMatikname.png"
@@ -61,17 +59,22 @@
 					Beschreibung:<br />
 					<h:outputText escape="false" value="#{rezept.beschreibung}" />
 				</div>
-
+				<br />
 				<h:form>
 					<input type="hidden" name="rid" value="#{uuid}" />
 					<h:commandButton action="#{rezeptHandler.like(uuid,true)}"
-						value="Daumen nach HOCH" />
-						<h:commandButton action="#{rezeptHandler.like(uuid,false)}"
-						value="Daumen nach RUNTER :c" />
+						value="Like" styleClass="fa fa-thumbs-up"/>
+					<h:commandButton action="#{rezeptHandler.like(uuid,false)}" value="Dislike">
+					<i class="fa fa-thumbs-down"></i>
+					</h:commandButton>
 				</h:form>
-				<div id="rtags">Tags: #{rezept.tags}</div>
-				<div> Likes: #{rezept.positiv.size()}</div>
-				<div> Dislikes: #{rezept.negativ.size()}</div>
+				<br />
+				<ul class="tags">
+					<div class="tag">Tags: #{rezept.tags}</div>
+				</ul>
+				<br />
+				<div>Likes: #{rezept.positiv.size()}</div>
+				<div>Dislikes: #{rezept.negativ.size()}</div>
 			</ui:repeat>
 		</c:if>
 		<c:if test="#{empty uuid}">
