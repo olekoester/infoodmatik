@@ -33,6 +33,7 @@
 		</c:if>
 		<c:if test="#{loggedIn}">
 			<li><a href="rezepterstellen.xhtml">Erstellen</a></li>
+			<li><a href="eigenerezepte.xhtml">Eigene</a></li>
 			<li><h:form>
 					<h:commandButton class="lgout" action="#{loginHandler.logout()}"
 						value="Logout" />
@@ -63,21 +64,19 @@
 				<br />
 				<h:form>
 					<input type="hidden" name="rid" value="#{uuid}" />
-					<h:commandButton action="#{rezeptHandler.like(uuid,true)}"
-						value="Like"/>
-					<h:commandButton action="#{rezeptHandler.like(uuid,false)}"
-						value="Dislike">
-						<i class="fa fa-thumbs-down"></i>
-					</h:commandButton>
+					<h:commandLink action="#{rezeptHandler.like(uuid,true)}">
+					<div class="fa">#{rezept.positiv.size()}<i class="fa fa-thumbs-up" > Like</i>
+					</div>
+					</h:commandLink>
+					<h:commandLink action="#{rezeptHandler.like(uuid,false)}">
+					<div class="fa">#{rezept.negativ.size()}<i class="fa fa-thumbs-down" > Dislike</i>
+					</div>
+					</h:commandLink>
 				</h:form>
-				<br/>
-				<div>Likes: #{rezept.positiv.size()}</div>
-				<div>Dislikes: #{rezept.negativ.size()}</div>
 				<br/>
 				<ul class="tags">
 					<div class="tag">Tags: #{rezept.tags}</div>
 				</ul>
-				<br />
 			</ui:repeat>
 		</c:if>
 		<c:if test="#{empty uuid}">
