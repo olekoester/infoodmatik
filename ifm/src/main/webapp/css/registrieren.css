@@ -22,7 +22,7 @@ body {
 
 .un {
 	width: 76%;
-	color: rgb(0, 170, 255);
+	color: rgb(100, 0, 0);
 	font-weight: 700;
 	font-size: 14px;
 	letter-spacing: 1px;
@@ -46,7 +46,7 @@ form.form1 {
 
 .pass {
 	width: 76%;
-	color: rgb(0, 170, 255);
+	color: rgb(100, 0, 0);
 	font-weight: 700;
 	font-size: 14px;
 	letter-spacing: 1px;
