@@ -10,6 +10,8 @@
 
 
 ## Requirements
-
+- Apache maven version 3.6.3
+- Wildfly 21.0.0.Final unser Anwendungsserver
+- JBoss Tools
 
 ## Setup
