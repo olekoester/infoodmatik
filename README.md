@@ -1,4 +1,4 @@
-# infoodmatik ist der Teamname für unser Projekt in SWEIII
+# Infoodmatik ein Projekt im Rahmen des Moduls SWEIII
 
 ## Table of contents
 * [Quick Start](#quick-start)
