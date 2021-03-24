@@ -84,7 +84,7 @@ public class LoginHandler {
 		}catch (Exception e) {
 			System.out.println("Bereits ausgeloggt");
 		}
-		return "index";
+		return "index?faces-redirect=true";
 	}
 
 	public void checkLoggedIn(boolean checkLogin) {
