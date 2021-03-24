@@ -51,7 +51,7 @@ body{
   position: relative;
   margin: 0 10px 10px 0;
   text-decoration: none;
-  webkit-transition: color 0.2s;
+  -webkit-transition: color 0.2s;
 }
 
 .tag::before {

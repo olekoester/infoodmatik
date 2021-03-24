@@ -16,7 +16,7 @@
 		</a>
 	</div>
 	<ul class="nav-links">
-		<li><div class="suchleiste">
+		<li><div class="suche">
 				<form action="suchergebnisse.xhtml">
 					<input type="text" value="" name="suche" required="true"> </input>
 					<button type="submit">Suchen</button>
@@ -29,7 +29,7 @@
 		</c:if>
 		<c:if test="#{loginHandler.checkLogin()}">
 			<li><a href="rezepterstellen.xhtml">Erstellen</a></li>
-			<li><a href="eigenerezepte.xhtml">Eigene</a></li>
+			<li><a href="eigenerezepte.xhtml" class="abstand">Eigene</a></li>
 			<li><h:form>
 					<h:commandButton class="lgout" action="#{loginHandler.logout()}"
 						value="Logout" />
