@@ -136,18 +136,24 @@ public class RezeptHandler implements Serializable {
 			query.setParameter("rid", rid2);
 			return query.getResultList();
 		} catch (Exception e) {
-			System.err.println("Ist Kapott" + e);
 			List<Rezept> fehler = new ArrayList<Rezept>(Arrays.asList(
 					new Rezept("", "", "HUCH da ist was schief gelaufen \n bittekehre zum Rezept zurück ", "")));
 			return fehler;
 		}
 	}
 
-	public List<Rezept> sucheRezept(String SuchAnfrage) {
-		// String suche = "Select r from Rezept r where r.name like '" + SuchAnfrage
-		// +"%'";
-		Query query = em.createNamedQuery("SucheRezept");
-		query.setParameter("name", SuchAnfrage);
+	public List<Rezept> sucheRezept(String SuchAnfrage,boolean tags) {
+		Query query;
+		System.out.println(tags+"    "+SuchAnfrage);
+		if(tags) {
+			query = em.createNamedQuery("SucheTags");
+			query.setParameter("tags", SuchAnfrage);
+		}else {
+			query = em.createNamedQuery("SucheRezept");
+			query.setParameter("name", SuchAnfrage);
+		}
+		
+		
 		List<Rezept> erg = query.getResultList();
 		if (erg.isEmpty()) {
 			List<Rezept> fehler = new ArrayList<Rezept>(

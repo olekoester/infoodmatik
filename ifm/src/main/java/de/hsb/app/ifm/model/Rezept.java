@@ -2,7 +2,6 @@ package de.hsb.app.ifm.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 import javax.enterprise.context.SessionScoped;
@@ -18,6 +17,7 @@ import javax.persistence.NamedQuery;
 @NamedQuery(name="SelectRezept", query="Select r from Rezept r")
 @NamedQuery(name="SelectOneRezept", query=" Select r from Rezept r where r.rid=: rid")
 @NamedQuery(name="SucheRezept", query=" Select r from Rezept r where charindex(UPPER(:name), UPPER(r.name))> 0")
+@NamedQuery(name="SucheTags", query=" Select r from Rezept r where charindex(UPPER(:tags), UPPER(r.tags))> 0")
 @NamedQuery(name="FindOwnRecipes", query="Select r from Rezept r where r.benutzer.id= :benutzer_id")
 @Entity
 

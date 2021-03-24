@@ -43,6 +43,32 @@
 
 	</nav>
 	<div class="container">
+	<h:form>
+	 	<h:commandButton action="suchergebnisse.xhtml" value="Vegetarisch" >
+	 		<f:param name="suche" value="Vegetarisch"/>
+	 		<f:param name="tags" value="true"/>
+	 	</h:commandButton>
+	 	<h:commandButton action="suchergebnisse.xhtml" value="Vegan" >
+	 		<f:param name="suche" value="Vegan"/>
+	 		<f:param name="tags" value="true"/>
+	 	</h:commandButton>
+	 	<h:commandButton action="suchergebnisse.xhtml" value="Fleisch" >
+	 		<f:param name="suche" value="Fleisch"/>
+	 		<f:param name="tags" value="true"/>
+	 	</h:commandButton>
+	 	<h:commandButton action="suchergebnisse.xhtml" value="Fisch" >
+	 		<f:param name="suche" value="Fisch"/>
+	 		<f:param name="tags" value="true"/>
+	 	</h:commandButton>
+	 	<h:commandButton action="suchergebnisse.xhtml" value="Backen" >
+	 		<f:param name="suche" value="Backen"/>
+	 		<f:param name="tags" value="true"/>
+	 	</h:commandButton>
+	 	<h:commandButton action="suchergebnisse.xhtml" value="Schnell" >
+	 		<f:param name="suche" value="Schnell"/>
+	 		<f:param name="tags" value="true"/>
+	 	</h:commandButton>
+	</h:form>
 		<ui:repeat var="rezept" value="#{rezeptHandler.rezept}"
 			varStatus="status">
 

@@ -21,6 +21,7 @@
 		<li><div class="suchleiste">
 				<form action="suchergebnisse.xhtml">
 					<input type="text" name="suche" required="true"> </input>
+					<input type="hidden" name="tags" value="false" />
 					<button type="submit">Suchen</button>
 				</form>
 			</div></li>
@@ -42,9 +43,10 @@
 	</nav>
 	<div class="container">
 		<ui:param name="suche" value="#{param['suche']}" />
+		<ui:param name="tags" value="#{param['tags']}" />
 		<c:if test="#{not empty suche}">
 
-			<ui:repeat var="rezept" value="#{rezeptHandler.sucheRezept(suche)}"
+			<ui:repeat var="rezept" value="#{rezeptHandler.sucheRezept(suche,tags)}"
 				varStatus="status">
 
 				<div class="rezept">
