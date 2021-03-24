@@ -105,8 +105,6 @@ public class LoginHandler {
 	}
 
 	public boolean checkLogin() {
-		System.out.println("checkLogin");
-		System.out.println(loggedIn);
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 		ConfigurableNavigationHandler nav = (ConfigurableNavigationHandler) fc.getApplication().getNavigationHandler();

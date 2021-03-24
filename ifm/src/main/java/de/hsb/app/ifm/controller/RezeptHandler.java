@@ -163,7 +163,7 @@ public class RezeptHandler implements Serializable {
 
 	}
 	
-	public String likeGeben(String rid) {
+	public String like(String rid) {
 		System.out.println("Hallo von like :)");
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
