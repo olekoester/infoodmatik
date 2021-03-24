@@ -30,6 +30,7 @@
 		</c:if>
 		<c:if test="#{loginHandler.checkLogin()}">
 			<li><a href="rezepterstellen.xhtml">Erstellen</a></li>
+			<li><a href="eigenerezepte.xhtml">Eigene</a></li>
 			<li><h:form>
 					<h:commandButton class="lgout" action="#{loginHandler.logout()}"
 						value="Logout" />
