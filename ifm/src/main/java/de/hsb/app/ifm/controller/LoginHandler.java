@@ -61,6 +61,7 @@ public class LoginHandler {
 					HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
 					session.setAttribute("id", session.getId());
 					session.setAttribute("username", username);
+					session.setAttribute("userID", nutzer.getId());
 				}
 			}
 		}

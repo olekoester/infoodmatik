@@ -61,9 +61,11 @@
 					<h:outputText escape="false" value="#{rezept.beschreibung}" />
 				</div>
 
-
+				<h:form>
+					<h:commandButton action="#{rezeptHandler.like(uuid)}" value="Daumen nach HOCH" />
+				</h:form>
 				<div id="rtags">Tags: #{rezept.tags}</div>
-
+				<div>#{rezept.positiv}</div>
 			</ui:repeat>
 		</c:if>
 		<c:if test="#{empty uuid}">
@@ -73,7 +75,10 @@
 			</h:form>
 		</c:if>
 	</div>
-	<br/><br/><br/><br/>
+	<br />
+	<br />
+	<br />
+	<br />
 	<div id="footer">
 		<div>Infoodmatik 2021 &#169;</div>
 	</div>

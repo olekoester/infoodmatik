@@ -1,6 +1,7 @@
 package de.hsb.app.ifm.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,6 +31,8 @@ public class Rezept implements Serializable {
 	private String beschreibung;
 	private String zutaten;
 	private String tags;
+	private ArrayList<UUID> positiv = new ArrayList<UUID>() ;
+	
 	
 	@Id
 	@GeneratedValue
@@ -116,5 +119,13 @@ public class Rezept implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public ArrayList<UUID> getPositiv() {
+		return positiv;
+	}
+
+	public void setPositiv(UUID nutzer) {
+		positiv.add(nutzer);
 	}
 }

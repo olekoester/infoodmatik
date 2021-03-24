@@ -162,6 +162,23 @@ public class RezeptHandler implements Serializable {
 		return erg;
 
 	}
+	
+	public String likeGeben(String rid) {
+		System.out.println("Hallo von like :)");
+		FacesContext fc = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+		UUID nutzerID = (UUID) session.getAttribute("userID");
+		UUID rid2 = UUID.fromString(rid);
+		merkeRezept = em.find(Rezept.class, rid2);
+		merkeRezept.setPositiv(nutzerID);
+		System.out.println(nutzerID);
+		merkeRezept = em.merge(merkeRezept);
+		System.out.println(merkeRezept.getName());
+		System.out.println("Positiv: "+merkeRezept.getPositiv());
+		em.persist(merkeRezept);
+		rezept.setWrappedData(em.createNamedQuery("SelectRezept").getResultList());
+		return "index";
+	}
 
 	public List<Rezept> findeEigeneRezepte() {
 		FacesContext fc = FacesContext.getCurrentInstance();
