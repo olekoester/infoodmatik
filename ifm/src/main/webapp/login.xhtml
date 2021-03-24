@@ -31,14 +31,14 @@
 				<p:outputLabel align="center" value="Username:" for="username" />
 				<h:panelGroup>
 					<p:inputText class="un" align="center" id="username"
-						required="true" value="#{loginHandler.username}" />
+						required="true" requiredMessage="Username fehlt" value="#{loginHandler.username}" />
 					<p:message for="username" styleClass="message" />
 				</h:panelGroup>
 
 				<p:outputLabel value="Password:" for="password" />
 				<h:panelGroup align="center">
 					<p:inputSecret class="pass" align="center" id="password"
-						required="true" value="#{loginHandler.password}" />
+						required="true" requiredMessage="Password fehlt" value="#{loginHandler.password}" />
 					<p:message for="password" styleClass="message" />
 				</h:panelGroup>
 
