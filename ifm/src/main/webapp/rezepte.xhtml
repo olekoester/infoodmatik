@@ -22,10 +22,9 @@
 		<li><div class="suche">
 				<form action="suchergebnisse.xhtml">
 					<input type="text" name="suche" required="true"> </input>
-					<button type="submit">Suchen</button>
+					<button id="suchbutton" type="submit">Suchen</button>
 				</form>
 			</div></li>
-		<li><a href="allerezepte.xhtml">Rezepte</a></li>
 		<ui:param name="loggedIn" value="#{loginHandler.checkLogin()}" />
 		<c:if test="#{not loggedIn}">
 			<li><a href="login.xhtml">Login</a></li>
@@ -58,7 +57,7 @@
 
 
 				<div id="rbeschreibung">
-					Beschreibung:<br />
+					Zubereitung:<br />
 					<h:outputText escape="false" value="#{rezept.beschreibung}" />
 				</div>
 				<br />
