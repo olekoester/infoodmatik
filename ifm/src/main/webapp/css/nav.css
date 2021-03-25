@@ -98,5 +98,21 @@ a {
 	margin-left: 20px;
 }
 
+#suchfeld{
+	font-family: "Poppins", sans-serif;
+	border:2px solid rgb(100,0,0);
+	border-radius:4px;
 
+}
+#suchbutton{
+	font-family: "Poppins", sans-serif;
+	border:2px solid rgb(100,0,0);
+	border-radius:4px;
+	transition-duration: 0.8s;
+}
+#suchbutton:hover{
+	background-color:rgb(100,0,0);
+	color:white;
 
+	letter-spacing: 2px;
+}
