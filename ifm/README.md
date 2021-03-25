@@ -12,6 +12,8 @@
 - In der IDE ein Deployment via "Run Configurations" erstellen Goal: "package wildfly:deploy"
 
 ## Betriebsanleitung
+- oeffnen Sie die index.xhtml
+
 Admin :
 - Wenn man sich als Admin Registrieren moechte, muss man bei der Registrierung das Adminpasswort "admin" mitgeben
 - Als Admin hat man die moeglichkeit alle Rezepte zu Bearbeiten und zu loeschen
