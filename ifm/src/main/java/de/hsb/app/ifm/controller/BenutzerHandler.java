@@ -123,6 +123,15 @@ public class BenutzerHandler implements Serializable {
 		}
 	}
 
+	
+	/*
+	 * Diese Methode wird bei Registrierung aufgerufen. 
+	 * Dabei prüfen wir zunächst, ob der gewählte Name bereits vergeben ist.
+	 * Anschließend überprüfen wir das Adminpasswort, falls dort etwas eingetragen wurde.
+	 * Falls alles stimmt werden die Daten gespeichert und man kommt auf die Indexseite.
+	 * Sollte das Adminpasswort falsch sein oder der Nutzername bereits vergben, bleibt man auf registrieren.xhtnml.
+	 * 
+	 * */
 	@Transactional
 	public String speichern() {
 		boolean available = true;

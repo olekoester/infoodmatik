@@ -106,6 +106,13 @@ public class RezeptHandler implements Serializable {
 		}
 	}
 
+	/*
+	 * Bearbeitetes oder erstelltes Rezept wird gespeichert.
+	 * 
+	 * Wir holen uns aus der aktuellen Session den Nutzernamen, um den zugehörigen Nutzer zum Rezept zu speichern. 
+	 * Die Attribute werden beim Login gesetzt.
+	 * 
+	 * */
 	@Transactional
 	public String speichern() {
 		FacesContext fc = FacesContext.getCurrentInstance();
