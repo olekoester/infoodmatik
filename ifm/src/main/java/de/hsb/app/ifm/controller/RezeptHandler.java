@@ -63,9 +63,9 @@ public class RezeptHandler implements Serializable {
 			em.persist(new Rezept("Müsli ", "200ml Milch \n 1x Müsli \n Früchte nach Wahl",
 					" 1.Schritt Geben Sie das Müsli in eine Schüssel  \n 2.Schritt Milch hinzufügen \n 3.Schritt Anschließend die Früchte schneiden und hinzugeben \n 4.Schritt Genießen ",
 					"Müsli, Vegetarisch, Milch, Bio, lowCarb"));
-			em.persist(new Rezept("Pudding", "1x Puddingmischung \n 1x Milch \n 1x Topf",
-					"1.Schritt Milch kochen \n 2. Schritt Puddingmischung dazu geben \n 3.Schritt Essen",
-					"Milch, Pudding, Vegetarisch, yay"));
+			em.persist(new Rezept("Pudding selbst gemacht", "500 ml Milch \n 1x Valnilleschote \n 1x 60 g Zucker \n 25 g Speisestärke \n 2x Eigelb",
+					"1. Bringen sie die Milch zum kochen \n 2. Schneiden sie die Vanilleschote längs auf auf und kratzen sie mit der Messerrückenseite das Mark heraus und geben BEIDES in die Milch hinzu. \n 3. Verrühren sie das Eigelb, den Zucker, die Stärke und 3 Esslöffel der Milch. \n 4. Die kochende Milch vom Herd nehmen und unter rühren den Ei-mix hinzugeben. \n 5. Noch einmal auf niedriger Stufe für eine Minute köcheln lassen. \n 6. Vanille Schote entfernen und in einer Schüssel servieren. ",
+					"Schnell, Vegetarisch"));
 			em.persist(new Rezept("Hacksteaks", "500g Hackfleisch \n 1 Brötchen vom Vortag/ 1 Toast (in Milch aufweichen) \n 1x Knoblauchzehe \n 1x Ei \n etwas TK Petersilie \n 1x Zwiebel \n 2 TL Tomatenmark \n Salz und Pfeffer \n Feta-Käse \n Chili \n Cayennepfeffer",
 					"Zwiebeln in Butter glasig braten. Pfanne ausstellen und Knoblauch dazu geben. Wenn Zwiebeln und\r\n"
 					+ "Knoblauch abgekühlt sind, zur Hackmasse geben. Brötchen oder Toast in Milch einweichen. Vor\r\n"
