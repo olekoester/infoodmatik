@@ -9,6 +9,7 @@ import java.util.UUID;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.enterprise.context.SessionScoped;
+import javax.enterprise.inject.New;
 import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
@@ -59,22 +60,25 @@ public class RezeptHandler implements Serializable {
 			e.printStackTrace();
 		}
 		if (firstExecute) {
-			em.persist(new Rezept("Müslii ", "1x Milch \n 1x Müsli",
-					" 1.Schritt Fügen Sie das Müsli  \n 2.Schritt Milch hinzufügen \n 3.Schritt Anschließend alles in eine Schüssel geben \n 4.Schritt Guten Appetit ",
-					"Müsli, Vegetarisch, Milch, Bio, Vegan, lowCarb"));
+			em.persist(new Rezept("Müsli ", "200ml Milch \n 1x Müsli \n Früchte nach Wahl",
+					" 1.Schritt Geben Sie das Müsli in eine Schüssel  \n 2.Schritt Milch hinzufügen \n 3.Schritt Anschließend die Früchte schneiden und hinzugeben \n 4.Schritt Genießen ",
+					"Müsli, Vegetarisch, Milch, Bio, lowCarb"));
 			em.persist(new Rezept("Pudding", "1x Puddingmischung \n 1x Milch \n 1x Topf",
 					"1.Schritt Milch kochen \n 2. Schritt Puddingmischung dazu geben \n 3.Schritt Essen",
 					"Milch, Pudding, Vegetarisch, yay"));
-			em.persist(new Rezept("KrümelEistee", "1x Wasser \n 1x Eisteekrümel \n 1x Wasserkocher",
-					"1.Schritt Wasser in Wasserkocher kochen \n 2. Schritt Krümeltee in Tasse \n 3.Schritt Kochendes Wasser in Tasse auf Krümeltee",
-					"Wasser, Tee, Krümel, lowCarb"));
-			em.persist(new Rezept("Toast", "1x Weißbrot \n 1x Toaster",
-					"1.Schritt Weißbrot aus Verpackung \n 2. Schritt Weißbrot in Toaster \n 3.Schritt warten \n 4.Schritt Toast aus Toaster \n 5.Schritt Essen",
-					"Toast, Weißbrot, Vegetarisch, Geister, Bio"));
-			em.persist(new Rezept("Nix", "1x Nix", "1.Schritt Du machst eh nix du Faues Stück >:C",
-					"Vegan, nix, also wirklich, da ist nix, also Langsam werde ich Wild, HALLO DU BRAUCHST HIER NICH GUCKEN, SAMMA WAS IST MIT DIR?,"));
+			em.persist(new Rezept("Hacksteaks", "500g Hackfleisch \n 1 Brötchen vom Vortag/ 1 Toast (in Milch aufweichen) \n 1x Knoblauchzehe \n 1x Ei \n etwas TK Petersilie \n 1x Zwiebel \n 2 TL Tomatenmark \n Salz und Pfeffer \n Feta-Käse \n Chili \n Cayennepfeffer",
+					"Zwiebeln in Butter glasig braten. Pfanne ausstellen und Knoblauch dazu geben. Wenn Zwiebeln und\r\n"
+					+ "Knoblauch abgekühlt sind, zur Hackmasse geben. Brötchen oder Toast in Milch einweichen. Vor\r\n"
+					+ "dem Mischen ausdrücken und auseinander zupfen. ca. 150g pro Steak.",
+					"Fleisch"));
+			em.persist(new Rezept("Metaxasoße", "ca 80g Tomatenmark \n 2 mittelgroße Zwiebeln, klein gehackt \n 200ml Gemüse- oder Rinderbrühe \n  250ml passierte Tomaten \n 200g süße Sahne \n 200g Crème Fraiche oder Schmand \n"
+					+ "1 Knoblauchzehe, klein gehackt \n  ca. 1TL Salz \n ca. 1TL Pfeffer aus der Mühle \n ca. 1TL Paprika rosenscharf \n ca. 4cl Metaxa \n etwas Pflanzenöl"
+					, "1.Schritt: Tomatenmark mit Öl im Topf anbraten \n 2.Schritt: Zwiebeln dazu geben und weichkochen \n 3.Schritt: Brühe hinzufügen \n 4.Schritt: Soße reduzieren \n 5.Schritt: Sahne und Creme Fraiche hinzugeben, aufkochen \n 6.Schritt: Soße reduzieren \n 7.Schritt: Knoblauch hinzugeben \n 8.Schritt: Salz, Pfeffer und Paprika hinzugügen \n 9.Schritt: Metaxa hinzufügen",
+					"Griechisch, Soße"));
 			em.persist(new Rezept("Bandnudeln mit frischem Spinat und Lachs", "600 g Bandnudeln \n 500g Blattspinat \n 1 Zwiebel \n 2 Zehen Knoblauch \n 1TL Gemüsebrühe \n 125 ml Wasser \n 1 Pkt. Lachs geräucherter \n 1 Becher \n 1 TL Speisestärke \n 2 EL Rapsöl \n 1 Prise Salz Pfeffer und Muskat", 
 					"Die Nudeln nach Gebrauchsanweisung kochen - Achtung, frische Nudeln brauchen nur 2 - 3 Minuten (also aufs Timing achten)! \n Die Zwiebel in Ringe schneiden, in eine Pfanne mit hohem Rand und Deckel mit dem Öl geben und bei kleiner bis mittlerer Hitze glasig dünsten (nicht braten!). Gemüsebrühe mit Wasser mischen und dazu gießen (alternativ geht auch Weißwein statt Brühe). Den Knoblauch schälen, in möglichst kleine Stückchen schneiden und in die Pfanne geben. Nun den Spinat dazugeben. Evtl. geht das nur nach und nach, er fällt aber schnell in sich zusammen, so dass nachgelegt werden kann, falls die Pfanne nicht groß genug ist. Den Räucherlachs in Stücke schneiden und dazugeben, sobald der Spinat komplett in sich zusammen gefallen ist. Alternativ zum Räucherlachs geht auch frischer Lachs, der auf die gleiche Weise einfach gewürfelt und noch roh dazugegeben werden kann. \n Etwas Flüssigkeit abnehmen und in einer Tasse mit der Stärke mischen, bis sie sich löst. Dieses Gemisch wieder in die Pfanne geben, ebenso den Becher Cremefine bzw. Schmand. \n Mit Pfeffer, Salz und (am besten frisch hinein geriebener) Muskatnuss würzen, die Nudel abgießen und untermischen und servieren. \n","Fisch"));
+			em.persist(new Rezept("Hamburger mit Kartoffelwedges", "500g Hackfleisch \n 4x Burgerbrötchen \n 1kg Kartoffeln \n 1x Tomate \n etwas Salat \n 1x Gurke \n Ketchup", 
+					"1.Schritt: Die Kartoffeln waschen und in Scheiben schneiden \n 2.Schritt: Olivenöl über die Kartoffeln streichen und mit Salz, Pfeffer und Oregano würzen \n 3.Schritt: Die Kartoffeln 40 Minuten bei 180°C backen \n 4.Schritt: Das Hackfleisch zu Patties formen. \n 5.Schritt: In der Zwischenzeit die Burgerpatties braten \n 6.Schritt: Den Burger nach Wahl belegen und mit den Kartoffeln genießen","Amerikanisch, Fleisch, Hauptgericht"));
 			firstExecute = false;
 		}
 		rezept = new ListDataModel<>();
