@@ -25,27 +25,27 @@
 	<div class="main" align="center">
 		<p class="sign" align="center">Login</p>
 		<h:form class="form1">
-			<p:panelGrid align="center" id="Grid" columns="2">
+			<h:panelGrid align="center" id="Grid" columns="2">
 				<f:facet name="header"></f:facet>
-				<p:outputLabel align="center" value="Username:" for="username" />
-				<h:panelGroup>
-					<p:inputText class="un" align="center" id="username"
-						required="true" requiredMessage="Username fehlt" value="#{loginHandler.username}" />
-					<p:message for="username" styleClass="message" />
+				<h:outputLabel class="username" value="Username:" for="username" />
+				<h:panelGroup align="center">
+					<h:inputText class="un" align="center" id="username"
+						required="true" value="#{loginHandler.username}" />
+					<h:message for="username" styleClass="message" />
 				</h:panelGroup>
 
-				<p:outputLabel value="Password:" for="password" />
+				<h:outputLabel value="Password:" for="password" />
 				<h:panelGroup align="center">
-					<p:inputSecret class="pass" align="center" id="password"
-						required="true" requiredMessage="Password fehlt" value="#{loginHandler.password}" />
-					<p:message for="password" styleClass="message" />
+					<h:inputSecret class="pass" align="center" id="password"
+						required="true" value="#{loginHandler.password}" />
+					<h:message for="password" styleClass="message" />
 				</h:panelGroup>
 
 				<h:panelGroup />
 				<h:commandButton class="submit" align="center"
 					action="#{loginHandler.login(benutzerHandler.benutzer)}"
 					value="Login" />
-			</p:panelGrid>
+			</h:panelGrid>
 		</h:form>
 	</div>
 		<div id="footer">
