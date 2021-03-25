@@ -49,7 +49,14 @@ public class LoginHandler {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	
+	/*
+	 * Überprüft beim Login, ob die Daten korrekt sind.
+	 * @param DataModel<Benutzer> benutzer In dem DataModel sind alle Benutzer gespeichert. Daraus vergleichen wir die Zugangsadten. 
+	 * @return String Gibt die Seite an, auf die man nach dem Login umgeleitet wird.
+	 * Man wird auf die Index umgeleitet, wenn die Daten korrekt sind. 
+	 * Falls man ungültige Daten, eingegeben hat bleibt man auf der Loginseite.
+	 * */
 	@Transactional
 	public String login(DataModel<Benutzer> benutzer) {
 		if (benutzer != null) {
@@ -71,7 +78,12 @@ public class LoginHandler {
 			return "login";
 		}
 	}
-
+	
+	/*
+	 * Zersört die aktuelle Session.
+	 * @return String Gibt die Seite an auf, die man nach dem Logout umgeleitet wird. 
+	 * Bei uns ist dies die Inedxseite.
+	 * */
 	public String logout() {
 		try {
 			FacesContext fc = FacesContext.getCurrentInstance();
@@ -87,6 +99,13 @@ public class LoginHandler {
 		return "index?faces-redirect=true";
 	}
 
+	/*Die Methode überprüft ob ein Nutzer eingeloggt ist. 
+	 *@param checkLogin Der Parameter gibt an, ob die Seite erreichbar sein soll, wenn man eingeloggt oder nicht eingeloggt ist.
+	 *Wenn checkLogin true ist, ist die Seite nur erreichbar, wenn man eingeloggt. 
+	 *Wenn checkLogin false ist, ist die Seite nur erreichbar, wenn man nicht eingeloggt ist. 
+	 *
+	 *Falls man die Seite nicht erreichen soll, wird man auf die Index umgeleitet. 
+	 * */
 	public void checkLoggedIn(boolean checkLogin) {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
@@ -105,6 +124,12 @@ public class LoginHandler {
 		}
 	}
 
+	/*
+	 * Prüft, ob man eingeloggt ist. 
+	 * @return boolean Die Methode liefert einen boolean zurück, der true ist, wenn man eingeloggt ist. 
+	 * Der Boolean ist false, wenn man nicht eingeloggt ist.
+	 * 
+	 * */
 	public boolean checkLogin() {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
