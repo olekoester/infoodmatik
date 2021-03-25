@@ -1,5 +1,7 @@
 body {
 	font-family: "Poppins", sans-serif;
+	margin: 2px;
+	align-items: center;
 }
 
 .main {
@@ -103,3 +105,8 @@ a {
 #adminPass {
 	display: none;
 }
+
+.message {
+	color: red; font-size: 14px;
+}
+
